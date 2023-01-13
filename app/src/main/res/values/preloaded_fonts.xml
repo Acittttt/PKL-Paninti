@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
-        <item>@font/open_sans</item>
+        <item>@font/opensans_bold</item>
+        <item>@font/opensans_regular</item>
+        <item>@font/open_sans_semibold</item>
+        <item>@font/poppins_regular</item>
         <item>@font/poppins_medium</item>
         <item>@font/poppins_semibold</item>
+        <item>@font/roboto</item>
     </array>
 </resources>

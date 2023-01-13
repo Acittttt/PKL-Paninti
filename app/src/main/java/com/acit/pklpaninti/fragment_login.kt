@@ -104,7 +104,7 @@ class fragment_login : Fragment() {
             }
 
         val spannable = SpannableStringBuilder(binding.Regis.text.toString())
-        val blueColor = ForegroundColorSpan(Color.parseColor("#4496B3"))
+        val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val fragment = fragment_register()

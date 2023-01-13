@@ -64,6 +64,7 @@ class fragment_register : Fragment() {
 
         val minNameRegex = "^.{2,}$"
         val minUserRegex = "^.{6,}$"
+        val UserRegex = "[a-zA-Z0-9._]+"
         val validPassRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
         var validName = false
         var validUser = false
@@ -72,7 +73,7 @@ class fragment_register : Fragment() {
         var validKonfirm = false
 
         val spannable = SpannableStringBuilder(binding.backL.text.toString())
-        val blueColor = ForegroundColorSpan(Color.parseColor("#4496B3"))
+        val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val fragment = fragment_login()
@@ -128,13 +129,15 @@ class fragment_register : Fragment() {
 
         binding.Edituser.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (s.toString().matches(minUserRegex.toRegex())){
+                if (!(s?.length ?: 0 >= 1)){
+                    binding.user.error = "Username wajib diisi"
+                } else if (!(s.toString().matches(minUserRegex.toRegex()))){
+                    binding.user.error = "Username minimal 6 karakter"
+                } else if (!(s.toString().matches(UserRegex.toRegex()))){
+                    binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
+                } else {
                     binding.user.isErrorEnabled = false
                     validUser = true
-                } else if (!(s?.length ?: 0 >= 1)){
-                    binding.user.error = "Username wajib diisi"
-                } else {
-                    binding.user.error = "Username minimal 6 karakter"
                 }
 
             }
