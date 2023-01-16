@@ -27,156 +27,123 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name"
+                style="@style/Widget.Paninti.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/extra_huge_margin"
-                android:hint="@string/nama"
-                android:layout_marginTop="@dimen/screen_margin"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginEnd="@dimen/screen_margin"
-                android:background="@drawable/bg_textbox"
-                android:paddingVertical="@dimen/view_height"
-                android:gravity="center"
+                android:hint="@string/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Editname"
+                    style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/label"
-                    android:background="@color/bg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textAppearance="@style/TextAppearance.Body2"/>
+                    android:inputType="text"
+                    android:textColor="@color/label_secondary"
+                    android:textAppearance="@style/TextAppearance.Body"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/user"
+                style="@style/Widget.Paninti.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/extra_huge_margin"
-                android:hint="@string/user"
-                android:layout_marginTop="@dimen/screen_margin"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/custom_margin_20dp"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginEnd="@dimen/screen_margin"
-                android:background="@drawable/bg_textbox"
-                android:paddingVertical="@dimen/view_height"
-                android:gravity="center"
+                android:hint="@string/user"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Edituser"
+                    style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/label"
-                    android:background="@color/bg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textAppearance="@style/TextAppearance.Body2"/>
+                    android:inputType="text"
+                    android:textColor="@color/label_secondary"
+                    android:textAppearance="@style/TextAppearance.Body"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email"
+                style="@style/Widget.Paninti.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/extra_huge_margin"
-                android:hint="@string/gmail"
-                android:layout_marginTop="@dimen/screen_margin"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/custom_margin_20dp"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginEnd="@dimen/screen_margin"
-                android:background="@drawable/bg_textbox"
-                android:paddingVertical="@dimen/view_height"
-                android:gravity="center"
+                android:hint="@string/gmail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/user"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Editemail"
+                    style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/label"
-                    android:background="@color/bg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textAppearance="@style/TextAppearance.Body2"/>
+                    android:inputType="text"
+                    android:textColor="@color/label_secondary"
+                    android:textAppearance="@style/TextAppearance.Body"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/pass"
+                style="@style/Widget.Paninti.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/extra_huge_margin"
-                android:layout_marginTop="@dimen/screen_margin"
-                android:hint="@string/pass"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/screen_margin"
-                android:layout_marginEnd="@dimen/screen_margin"
-                android:background="@drawable/bg_textbox"
-                android:paddingVertical="@dimen/view_height"
-                android:gravity="center"
+                android:layout_margin="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/custom_margin_20dp"
+                android:hint="@string/pass"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email"
-                app:passwordToggleEnabled="true"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Editpass"
+                    style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
-                    android:textColor="@color/label"
-                    android:inputType="textPassword"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textAppearance="@style/TextAppearance.Body2"/>
+                    android:inputType="text"
+                    android:textColor="@color/label_secondary"
+                    android:textAppearance="@style/TextAppearance.Body"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/confirm"
+                style="@style/Widget.Paninti.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/extra_huge_margin"
-                android:layout_marginTop="@dimen/screen_margin"
-                android:hint="@string/konfirm"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/custom_margin_20dp"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:layout_marginEnd="@dimen/screen_margin"
-                android:background="@drawable/bg_textbox"
-                android:paddingVertical="@dimen/view_height"
-                android:gravity="center"
+                android:hint="@string/confirm"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pass"
-                app:passwordToggleEnabled="true"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/pass">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Editconfirm"
+                    style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
-                    android:textColor="@color/label"
-                    android:inputType="textPassword"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textAppearance="@style/TextAppearance.Body2"/>
+                    android:inputType="text"
+                    android:textColor="@color/label_secondary"
+                    android:textAppearance="@style/TextAppearance.Body"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/rbutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/jl"
+                android:text="@string/pr"
                 android:layout_marginLeft="@dimen/screen_margin"
                 android:layout_marginTop="@dimen/screen_margin"
                 android:textColor="@color/black"
@@ -196,9 +163,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/medium_margin"
-                    android:text="@string/laki"
+                    android:text="@string/boy"
                     android:layout_marginLeft="@dimen/screen_margin"
-                    android:textColor="@color/label"
+                    android:textColor="@color/label_secondary"
                     android:checked="true"
                     android:textAppearance="@style/TextAppearance.Body2"/>
 
@@ -206,9 +173,9 @@
                     android:id="@+id/girl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cewe"
+                    android:text="@string/girl"
                     android:layout_marginLeft="@dimen/screen_margin"
-                    android:textColor="@color/label"
+                    android:textColor="@color/label_secondary"
                     android:layout_margin="@dimen/medium_margin"
                     android:textAppearance="@style/TextAppearance.Body2"/>
 
@@ -221,7 +188,7 @@
                 android:padding="@dimen/button_padding_vertical"
                 android:layout_marginEnd="@dimen/screen_margin"
                 android:layout_marginStart="@dimen/screen_margin"
-                android:text="@string/daftar"
+                android:text="@string/regis"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/main"
@@ -243,10 +210,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/Tdiv"
                 android:layout_marginEnd="@dimen/Tdiv"
-                android:text="@string/atau"
+                android:text="@string/or"
                 android:textAlignment="center"
                 android:background="@color/white"
-                android:textColor="@color/label"
+                android:textColor="@color/label_secondary"
                 android:layout_marginTop="@dimen/rating_bar_height"
                 app:layout_constraintTop_toBottomOf="@+id/submit"
                 app:layout_constraintBottom_toTopOf="@+id/div"
@@ -261,7 +228,7 @@
                 android:layout_marginEnd="@dimen/screen_margin"
                 android:layout_marginStart="@dimen/screen_margin"
                 android:backgroundTint="@color/white"
-                android:textColor="@color/label"
+                android:textColor="@color/label_secondary"
                 android:fontFamily="@font/roboto"
                 android:text="@string/google"
                 android:drawableLeft="@drawable/icon_google"
@@ -275,7 +242,7 @@
                 android:layout_marginTop="@dimen/medium_margin"
                 android:text="@string/backL"
                 android:textAlignment="center"
-                android:textColor="@color/label"
+                android:textColor="@color/label_secondary"
                 app:layout_constraintTop_toBottomOf="@+id/google"
                 android:textAppearance="@style/TextAppearance.Caption1"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

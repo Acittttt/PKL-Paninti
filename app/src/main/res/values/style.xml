@@ -160,4 +160,36 @@
         <item name="android:lineSpacingExtra">-1sp</item>
         <item name="android:letterSpacing">-0.04</item>
     </style>
+
+    <!-- Text Field Theme. -->
+    <style name="Widget.Paninti.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">
+            @style/ThemeOverlay.Paninti.TextInputLayout.FilledBox
+        </item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeWidth">@dimen/zero_dp</item>
+        <item name="boxStrokeWidthFocused">@dimen/zero_dp</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="errorTextAppearance">@style/TextAppearance.Caption1</item>
+        <item name="errorTextColor">@color/alert_error</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="hintTextAppearance">@style/TextAppearance.Overline</item>
+        <item name="hintTextColor">@color/label_secondary</item>
+        <item name="passwordToggleTint">@color/label_tertiary</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.Body2</item>
+        <item name="placeholderTextColor">@color/label_secondary</item>
+        <item name="suffixTextAppearance">@style/TextAppearance.Body2</item>
+        <item name="suffixTextColor">@color/label_tertiary</item>
+    </style>
+    
+    <style name="ThemeOverlay.Paninti.TextInputLayout.FilledBox" parent="">
+        <item name="editTextStyle">@style/Widget.Paninti.TextInputEditText.FilledBox</item>
+    </style>
+    
+    <style name="Widget.Paninti.TextInputEditText.FilledBox" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:background">@drawable/bg_selector</item>
+        <item name="maxLines">1</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body2</item>
+        <item name="android:textColor">@color/label_primary</item>
+    </style>
 </resources>

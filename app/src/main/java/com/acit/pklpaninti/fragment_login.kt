@@ -15,10 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.activity_login.*
 import android.util.DisplayMetrics
-
-
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class fragment_login : Fragment() {
@@ -38,52 +36,7 @@ class fragment_login : Fragment() {
 
         var validUser = false
         var validPass = false
-        val paddingDp = 4
-        val density = context?.getResources()?.getDisplayMetrics()?.density ?: 0.0f
-        val paddingPixel = (paddingDp.times(density)).toInt();
-        view.setPadding(0,paddingPixel,0,0);
 
-        binding.Edituser.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
-
-        binding.Editpass.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-            }
 
         val spannable = SpannableStringBuilder(binding.Regis.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
@@ -102,7 +55,7 @@ class fragment_login : Fragment() {
         binding.Editpass.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if(s?.length ?: 0 >= 1) {
-                    pass.error = null
+                    pass.isErrorEnabled = false
                     validPass = true
                 } else {
                     pass.error = "Password wajib diisi"
@@ -119,7 +72,7 @@ class fragment_login : Fragment() {
         binding.Edituser.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if(s?.length ?: 0 >= 1) {
-                    user.error = null
+                    user.isErrorEnabled = false
                     validUser = true
                 } else {
                     user.error = "Email atau Username wajib diisi"
@@ -135,15 +88,15 @@ class fragment_login : Fragment() {
 
         binding.submit.setOnClickListener{
             if(binding.Edituser.text.toString() == ""){
-                binding.user.error = "Nama lengkap wajib diisi"
+                binding.user.error = "Email atau Username wajib diisi"
                 validUser = false
             }
             if(binding.Editpass.text.toString() == "") {
-                binding.pass.error = "Username wajib diisi"
+                binding.pass.error = "Password wajib diisi"
                 validPass = false
             }
 
-            if(validUser == true && validUser == true && validPass == true ){
+            if(validUser == true && validPass == true ){
                 val intent = Intent (getActivity(), activity_home::class.java)
                 getActivity()?.startActivity(intent)
             } else {

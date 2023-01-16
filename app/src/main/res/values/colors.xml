@@ -9,8 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark">#3A3A3C</color>
     <color name="main">#55BCE0</color>
-    <color name="label">#8A8A8E</color>
+    <color name="label_primary">#0C1517</color>
+    <color name="label_secondary">#8A8A8E</color>
+    <color name="label_tertiary">#C5C5C7</color>
     <color name="blue">#2F80ED</color>
     <color name="box">#4496B3</color>
     <color name="bg">#00000000</color>
+    <color name="alert_error">#FF4444</color>
 </resources>
