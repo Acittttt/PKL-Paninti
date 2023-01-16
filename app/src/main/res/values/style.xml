@@ -174,7 +174,7 @@
         <item name="errorTextColor">@color/alert_error</item>
         <item name="expandedHintEnabled">true</item>
         <item name="hintTextAppearance">@style/TextAppearance.Overline</item>
-        <item name="hintTextColor">@color/label_secondary</item>
+        <item name="hintTextColor">@color/box</item>
         <item name="passwordToggleTint">@color/label_tertiary</item>
         <item name="placeholderTextAppearance">@style/TextAppearance.Body2</item>
         <item name="placeholderTextColor">@color/label_secondary</item>
