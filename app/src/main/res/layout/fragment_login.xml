@@ -27,26 +27,22 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="280dp"
-            android:layout_height="193dp"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
             android:src="@drawable/image_welcomeuser2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.038" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            style="@style/TextAppearance.Subtitle1"
-            android:text="Selamat Datang, Parents!"
+            android:layout_marginTop="@dimen/screen_margin"
+            android:textAppearance="@style/TextAppearance.Subtitle1"
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textColor="@color/dark"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon" />
@@ -54,13 +50,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/extra_huge_margin"
             android:hint="@string/email"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginStart="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/screen_margin"
             android:background="@drawable/bg_textbox"
-            android:paddingVertical="0dp"
+            android:paddingVertical="@dimen/view_height"
             android:gravity="center_vertical"
             app:boxBackgroundColor="@color/white"
             app:boxStrokeColor="@color/white"
@@ -77,20 +73,20 @@
                 android:textColor="@color/label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                style="@style/TextAppearance.Body2"/>
+                android:textAppearance="@style/TextAppearance.Body2"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="@dimen/extra_huge_margin"
+            android:layout_marginStart="@dimen/screen_margin"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/screen_margin"
             android:hint="@string/pass"
             android:gravity="center_vertical"
             android:background="@drawable/bg_textbox"
-            android:paddingVertical="0dp"
+            android:paddingVertical="@dimen/view_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user"
             app:passwordToggleEnabled="true"
@@ -107,7 +103,7 @@
                 android:background="@color/bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                style="@style/TextAppearance.Body2"/>
+                android:textAppearance="@style/TextAppearance.Body2"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -116,79 +112,79 @@
             android:layout_height="wrap_content"
             android:text="@string/forget"
             android:textAlignment="textEnd"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/progress_indicator_thickness"
             android:textColor="@color/label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/TextAppearance.Caption1"/>
+            android:textAppearance="@style/TextAppearance.Caption1"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/masuk"
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/main"
             android:text="@string/masuk"
             android:textAllCaps="false"
-            android:padding="13dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
+            android:padding="@dimen/screen_margin"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginStart="@dimen/screen_margin"
             app:layout_constraintTop_toBottomOf="@+id/forget"
-            app:cornerRadius="17px"
-            style="@style/TextAppearance.Button"
+            app:cornerRadius="@dimen/corner"
+            android:textAppearance="@style/TextAppearance.Button"
             android:textColor="@color/white"/>
 
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/kiri"
+            android:id="@+id/div"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="19.5dp"
-            app:layout_constraintTop_toBottomOf="@+id/masuk"
-            app:layout_constraintStart_toEndOf="@+id/atau" />
+            android:layout_marginTop="@dimen/rating_bar_height"
+            app:layout_constraintTop_toBottomOf="@+id/submit"
+            app:layout_constraintStart_toEndOf="@+id/Tdiv" />
 
         <TextView
-            android:id="@+id/atau"
+            android:id="@+id/Tdiv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="190dp"
-            android:layout_marginEnd="190dp"
+            android:layout_marginStart="@dimen/Tdiv"
+            android:layout_marginEnd="@dimen/Tdiv"
             android:text="@string/atau"
             android:textAlignment="center"
-            style="@style/TextAppearance.Caption1"
+            android:textAppearance="@style/TextAppearance.Caption1"
             android:background="@color/white"
             android:textColor="@color/label"
-            android:layout_marginTop="17dp"
-            app:layout_constraintTop_toBottomOf="@+id/masuk"
-            app:layout_constraintBottom_toTopOf="@+id/kiri"/>
+            android:layout_marginTop="@dimen/screen_margin"
+            app:layout_constraintTop_toBottomOf="@+id/submit"
+            app:layout_constraintBottom_toTopOf="@+id/div"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/google"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
+            android:padding="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/option_button_height"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginStart="@dimen/screen_margin"
             android:backgroundTint="@color/white"
             android:textColor="@color/label"
             android:text="@string/google"
             android:fontFamily="@font/roboto"
             android:drawableLeft="@drawable/icon_google"
-            app:cornerRadius="17px"
-            app:layout_constraintTop_toBottomOf="@+id/atau"/>
+            app:cornerRadius="@dimen/corner"
+            app:layout_constraintTop_toBottomOf="@+id/Tdiv"/>
 
         <TextView
             android:id="@+id/Regis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/option_button_height"
             android:text="@string/bottom"
             android:textAlignment="center"
             android:textColor="@color/label"
             app:layout_constraintTop_toBottomOf="@+id/google"
-            style="@style/TextAppearance.Caption1"/>
+            android:textAppearance="@style/TextAppearance.Caption1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

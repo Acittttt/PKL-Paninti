@@ -19,34 +19,13 @@ import com.acit.pklpaninti.databinding.FragmentRegisterBinding
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_register.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_register : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
 
     override fun onCreateView(
@@ -66,11 +45,12 @@ class fragment_register : Fragment() {
         val minUserRegex = "^.{6,}$"
         val UserRegex = "[a-zA-Z0-9._]+"
         val validPassRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+        val validNameRegex = "^[a-zA-Z'\\s]*\$"
         var validName = false
         var validUser = false
         var validEmail = false
         var validPass = false
-        var validKonfirm = false
+        var validConfirm = false
 
         val spannable = SpannableStringBuilder(binding.backL.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
@@ -87,15 +67,17 @@ class fragment_register : Fragment() {
         binding.backL.text = spannable
         binding.backL.movementMethod = LinkMovementMethod.getInstance()
 
-        binding.Editnama.addTextChangedListener(object : TextWatcher {
+        binding.Editname.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (s.toString().matches(minNameRegex.toRegex())){
-                    binding.nama.isErrorEnabled = false
-                    validName = true
-                } else if (!(s?.length ?: 0 >= 1)){
-                    binding.nama.error = "Nama lengkap wajib diisi"
+                if (!(s?.length ?: 0 >= 1)){
+                    binding.name.error = "Nama wajib diisi"
+                } else if (!(s.toString().matches(minNameRegex.toRegex()))){
+                    binding.name.error = "Nama lengkap minimal 2 karakter"
+                } else if (!(s.toString().matches(validNameRegex.toRegex()))){
+                    binding.name.error = "Nama tidak bisa menggunakan angka dan simbol"
                 } else {
-                    binding.nama.error = "Nama lengkap minimal 2 karakter"
+                    binding.name.isErrorEnabled = false
+                    validName = true
                 }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -106,7 +88,7 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editnama.apply{
+        binding.Editname.apply{
             onFocusChangeListener =
                 View.OnFocusChangeListener { p0, onFocus ->
                     if (onFocus) {
@@ -139,7 +121,6 @@ class fragment_register : Fragment() {
                     binding.user.isErrorEnabled = false
                     validUser = true
                 }
-
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -254,15 +235,15 @@ class fragment_register : Fragment() {
                 }
         }
 
-        binding.Editkonfirm.addTextChangedListener(object : TextWatcher {
+        binding.Editconfirm.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s.toString() == binding.Editpass.text.toString()){
-                    binding.konfirm.isErrorEnabled = false
-                    validKonfirm = true
+                    binding.confirm.isErrorEnabled = false
+                    validConfirm = true
                 } else if (!(s?.length ?: 0 >= 1)){
-                    binding.konfirm.error = "Konfirmasi password wajib diisi"
+                    binding.confirm.error = "Konfirmasi password wajib diisi"
                 } else {
-                    binding.konfirm.error = "Konfirmasi password tidak sesuai"
+                    binding.confirm.error = "Konfirmasi password tidak sesuai"
                 }
 
             }
@@ -274,7 +255,7 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editkonfirm.apply{
+        binding.Editconfirm.apply{
             onFocusChangeListener =
                 View.OnFocusChangeListener { p0, onFocus ->
                     if (onFocus) {
@@ -295,9 +276,9 @@ class fragment_register : Fragment() {
                 }
         }
 
-        binding.masuk.setOnClickListener{
-            if(binding.Editnama.text.toString() == ""){
-                binding.nama.error = "Nama lengkap wajib diisi"
+        binding.submit.setOnClickListener{
+            if(binding.Editname.text.toString() == ""){
+                binding.name.error = "Nama lengkap wajib diisi"
                 validName = false
             }
             if(binding.Edituser.text.toString() == ""){
@@ -312,12 +293,12 @@ class fragment_register : Fragment() {
                 binding.pass.error = "Password wajib diisi"
                 validPass = false
             }
-            if (binding.Editkonfirm.text.toString() == ""){
-                binding.konfirm.error = "Konfirmasi password wajib diisi"
-                validKonfirm = false
+            if (binding.Editconfirm.text.toString() == ""){
+                binding.confirm.error = "Konfirmasi password wajib diisi"
+                validConfirm = false
             }
 
-            if(validName == true && validUser == true && validEmail == true && validPass == true && validKonfirm == true){
+            if(validName == true && validUser == true && validEmail == true && validPass == true && validConfirm == true){
                 val intent = Intent (getActivity(), activity_home::class.java)
                 getActivity()?.startActivity(intent)
             } else {
@@ -334,24 +315,5 @@ class fragment_register : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_register.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic fun newInstance(param1: String, param2: String) =
-                fragment_register().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
     }
 }
