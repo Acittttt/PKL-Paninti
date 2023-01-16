@@ -3,28 +3,30 @@ package com.acit.pklpaninti
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.TextWatcher
+import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.text.TextUtilsCompat
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
 import com.acit.pklpaninti.databinding.FragmentRegisterBinding
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
 class fragment_register : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var isNullName = false
+    private var isNullUser = false
+    private var isNullEmail = false
+    private var isNullPass = false
+    private var isNullConfirmPass = false
     private val binding get() = _binding!!
 
 
@@ -36,10 +38,6 @@ class fragment_register : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val paddingDp = 4
-        val density = context?.getResources()?.getDisplayMetrics()?.density ?: 0.0f
-        val paddingPixel = (paddingDp.times(density)).toInt();
-        view.setPadding(0,paddingPixel,0,0);
 
         val minNameRegex = "^.{2,}$"
         val minUserRegex = "^.{6,}$"
@@ -88,26 +86,6 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editname.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
 
         binding.Edituser.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -130,26 +108,6 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Edituser.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
 
         binding.Editemail.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -171,26 +129,6 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editemail.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
 
         binding.Editpass.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -214,26 +152,6 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editpass.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
 
         binding.Editconfirm.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -255,26 +173,6 @@ class fragment_register : Fragment() {
             }
         })
 
-        binding.Editconfirm.apply{
-            onFocusChangeListener =
-                View.OnFocusChangeListener { p0, onFocus ->
-                    if (onFocus) {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            4.times(density).toInt()
-                        )
-                    } else {
-                        setPadding(
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt(),
-                            16.times(density).toInt()
-                        )
-                    }
-                }
-        }
 
         binding.submit.setOnClickListener{
             if(binding.Editname.text.toString() == ""){
@@ -311,6 +209,173 @@ class fragment_register : Fragment() {
         return view
     }
 
+//    private fun signUp(){
+//        binding.submit.setOnClickListener{
+//            validData()
+//        }
+//    }
+//
+//    private fun validData(){
+//        nullCheck()
+//        validTrue()
+//    }
+//
+//    private fun validTrue(){
+//        if (nullName() && nullUser() && nullEmail() && nullPass() && nullConfirmPass())
+//            binding()
+//    }
+//
+//    private fun nullCheck(){
+//        isNullName()
+//        isNullUser()
+//        isNullEmail()
+//        isNullPass()
+//        isNullConfirmPass()
+//    }
+//
+//    private fun isNullName() :Boolean{
+//        isNullName = if(binding.Editname.length() == 1){
+//            isNullName()
+//            false
+//        } else {
+//            true
+//        }
+//
+//        return isNullName
+//    }
+//
+//    private fun isNullUser(): Boolean {
+//        isNullUser= if (binding.Edituser.length() == 1){
+//            isNullUser()
+//            false
+//        } else {
+//            true
+//        }
+//
+//        return isNullUser
+//    }
+//
+//    private fun isNullEmail(): Boolean {
+//        isNullEmail = if (binding.Editemail.length() == 1){
+//            isNullEmail()
+//            false
+//        } else {
+//            true
+//        }
+//
+//        return isNullEmail
+//    }
+//
+//    private fun isNullPass(): Boolean {
+//        isNullPass = if (binding.Editpass.length() == 1){
+//            isNullPass()
+//            false
+//        } else{
+//            true
+//        }
+//
+//        return isNullPass
+//    }
+//
+//    private fun isNullConfirmPass(): Boolean {
+//        isNullConfirmPass = if(binding.Editconfirm.length() == 1){
+//            isNullConfirmPass()
+//            false
+//        } else {
+//            true
+//        }
+//
+//        return isNullConfirmPass
+//    }
+//
+//    private fun binding() {
+//        val intent = Intent(activity, activity_home::class.java)
+//        startActivity(intent)
+//    }
+//
+//    private fun nullName(): Boolean {
+//        binding.name.error = "Nama lengkap wajib diisi"
+//        return false
+//    }
+//
+//    private fun nullUser(): Boolean {
+//        binding.user.error = "Username wajib diisi"
+//        return false
+//    }
+//
+//    private fun nullEmail(): Boolean {
+//        binding.email.error = "Email wajib diisi"
+//        return false
+//    }
+//
+//    private fun nullPass(): Boolean {
+//        binding.pass.error = "Password wajib diisi"
+//        return false
+//    }
+//
+//    private fun nullConfirmPass(): Boolean {
+//        binding.confirm.error = "Konfirmasi Password wajib diisi"
+//        return false
+//    }
+//
+//    private fun regexMinName(): Boolean {
+//        binding.name.error = "Nama lengkap minimal 2 karakter"
+//        return false
+//    }
+//
+//    private fun regexMinUser(): Boolean {
+//        binding.user.error = "Username minimal 6 karakter"
+//        return false
+//    }
+//
+//    private fun regexEmail(target:CharSequence?): Boolean {
+//        return !TextUtils.isEmpty(target)&&Patterns.EMAIL_ADDRESS.matcher(target).matches()
+//    }
+//
+//    private fun regexEmailResult(): Boolean {
+//        binding.email.error = "Format email tidak sesuai"
+//        return false
+//    }
+//
+//    private fun regexPass(): Boolean {
+//        binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
+//        return false
+//    }
+//
+//    private fun regexSymbolUser(): Boolean {
+//        binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
+//        return false
+//    }
+//
+//    private fun validatePass(): Boolean {
+//        binding.confirm.error = "Konfirmasi Password tidak sesuai"
+//        return false
+//    }
+//
+//    private fun clearName(): Boolean {
+//        binding.name.isErrorEnabled = false
+//        return true
+//    }
+//
+//    private fun clearUser(): Boolean {
+//        binding.user.isErrorEnabled = false
+//        return true
+//    }
+//
+//    private fun clearEmail(): Boolean {
+//        binding.email.isErrorEnabled = false
+//        return true
+//    }
+//
+//    private fun clearPass(): Boolean {
+//        binding.pass.isErrorEnabled = false
+//        return true
+//    }
+//
+//    private fun clearConfirmPass(): Boolean {
+//        binding.confirm.isErrorEnabled = false
+//        return true
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
