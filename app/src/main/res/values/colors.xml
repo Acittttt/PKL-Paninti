@@ -12,8 +12,8 @@
     <color name="label_primary">#0C1517</color>
     <color name="label_secondary">#8A8A8E</color>
     <color name="label_tertiary">#C5C5C7</color>
-    <color name="blue">#2F80ED</color>
-    <color name="box">#4496B3</color>
+    <color name="blue">#5890FF</color>
+    <color name="box">#33B5E5</color>
     <color name="bg">#00000000</color>
     <color name="alert_error">#FF4444</color>
 </resources>

@@ -60,8 +60,8 @@ class fragment_login : Fragment() {
                 transaction?.replace(R.id.frame_layout, fragment)?.commit()
             }
         }
-        spannable.setSpan(blueColor, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannable.setSpan(clickableSpan, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(blueColor, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.Regis.text = spannable
         binding.Regis.movementMethod = LinkMovementMethod.getInstance()
 
