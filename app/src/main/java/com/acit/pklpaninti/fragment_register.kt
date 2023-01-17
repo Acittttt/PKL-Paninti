@@ -17,17 +17,30 @@ import androidx.core.text.TextUtilsCompat
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
 import com.acit.pklpaninti.databinding.FragmentRegisterBinding
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
 
 class fragment_register : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
-    private var isNullName = false
-    private var isNullUser = false
-    private var isNullEmail = false
-    private var isNullPass = false
-    private var isNullConfirmPass = false
     private val binding get() = _binding!!
+
+    private var isNullFullName = false
+    private var isNullUsername = false
+    private var isNullEmail = false
+    private var isNullPassword = false
+    private var isNullConfirmPassword = false
+
+    val minTwoCharRegex = "^.{2,}$"
+    val minSixCharRegex = "^.{6,}$"
+    val passwordRegex ="^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+    val fullNameRegex = "[A-Za-z '-]+"
+    val usernameRegex = "[a-zA-Z0-9._]+"
+    var validName = false
+    var validUsername = false
+    var validEmail = false
+    var validPassword = false
+    var validConfirmPassword = false
 
 
     override fun onCreateView(
@@ -38,344 +51,321 @@ class fragment_register : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        return view
+    }
 
-        val minNameRegex = "^.{2,}$"
-        val minUserRegex = "^.{6,}$"
-        val UserRegex = "[a-zA-Z0-9._]+"
-        val validPassRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
-        val validNameRegex = "^[a-zA-Z'\\s]*\$"
-        var validName = false
-        var validUser = false
-        var validEmail = false
-        var validPass = false
-        var validConfirm = false
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view()
+    }
 
+    private fun view(){
         val spannable = SpannableStringBuilder(binding.backL.text.toString())
-        val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
+        val blueColor = ForegroundColorSpan(Color.parseColor("#4496B3"))
+
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val fragment = fragment_login()
                 val transaction = fragmentManager?.beginTransaction()
-                transaction?.replace(R.id.frame_layout,fragment)?.commit()
+                transaction?.replace(R.id.frame_layout, fragment)?.commit()
             }
         }
-
         spannable.setSpan(blueColor, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannable.setSpan(clickableSpan, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.backL.text = spannable
         binding.backL.movementMethod = LinkMovementMethod.getInstance()
 
-        binding.Editname.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
-                    binding.name.error = "Nama wajib diisi"
-                } else if (!(s.toString().matches(minNameRegex.toRegex()))){
-                    binding.name.error = "Nama lengkap minimal 2 karakter"
-                } else if (!(s.toString().matches(validNameRegex.toRegex()))){
-                    binding.name.error = "Nama tidak bisa menggunakan angka dan simbol"
-                } else {
-                    binding.name.isErrorEnabled = false
-                    validName = true
-                }
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-
-        binding.Edituser.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
-                    binding.user.error = "Username wajib diisi"
-                } else if (!(s.toString().matches(minUserRegex.toRegex()))){
-                    binding.user.error = "Username minimal 6 karakter"
-                } else if (!(s.toString().matches(UserRegex.toRegex()))){
-                    binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
-                } else {
-                    binding.user.isErrorEnabled = false
-                    validUser = true
-                }
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-
-        binding.Editemail.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches()){
-                    binding.email.isErrorEnabled = false
-                    validEmail = true
-                } else if (!(s?.length ?: 0 >= 1)){
-                    binding.email.error = "Email wajib diisi"
-                } else {
-                    binding.email.error = "Format email tidak sesuai"
-                }
-
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-
-        binding.Editpass.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
-                    binding.pass.error = "Password wajib diisi"
-                } else if (!(s.toString().matches(minUserRegex.toRegex()))){
-                    binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
-                } else if (!(s.toString().matches(validPassRegex.toRegex()))){
-                    binding.pass.error = "Password minimal berisi 1 huruf kapital dan 1 angka"
-                } else {
-                    binding.pass.isErrorEnabled = false
-                    validPass = true
-                }
-
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-
-        binding.Editconfirm.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (s.toString() == binding.Editpass.text.toString()){
-                    binding.confirm.isErrorEnabled = false
-                    validConfirm = true
-                } else if (!(s?.length ?: 0 >= 1)){
-                    binding.confirm.error = "Konfirmasi password wajib diisi"
-                } else {
-                    binding.confirm.error = "Konfirmasi password tidak sesuai"
-                }
-
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-
-        binding.submit.setOnClickListener{
-            if(binding.Editname.text.toString() == ""){
-                binding.name.error = "Nama lengkap wajib diisi"
-                validName = false
-            }
-            if(binding.Edituser.text.toString() == ""){
-                binding.user.error = "Username wajib diisi"
-                validUser = false
-            }
-            if (binding.Editemail.text.toString() == ""){
-                binding.email.error = "Email wajib diisi"
-                validEmail = false
-            }
-            if (binding.Editpass.text.toString() == ""){
-                binding.pass.error = "Password wajib diisi"
-                validPass = false
-            }
-            if (binding.Editconfirm.text.toString() == ""){
-                binding.confirm.error = "Konfirmasi password wajib diisi"
-                validConfirm = false
-            }
-
-            if(validName == true && validUser == true && validEmail == true && validPass == true && validConfirm == true){
-                val intent = Intent (getActivity(), activity_home::class.java)
-                getActivity()?.startActivity(intent)
-            } else {
-
-                }
-            }
-
-
-
-        return view
+        fullName()
+        username()
+        email()
+        password()
+        confirmPassword()
+        submit()
     }
 
-//    private fun signUp(){
-//        binding.submit.setOnClickListener{
-//            validData()
-//        }
-//    }
-//
-//    private fun validData(){
-//        nullCheck()
-//        validTrue()
-//    }
-//
-//    private fun validTrue(){
-//        if (nullName() && nullUser() && nullEmail() && nullPass() && nullConfirmPass())
-//            binding()
-//    }
-//
-//    private fun nullCheck(){
-//        isNullName()
-//        isNullUser()
-//        isNullEmail()
-//        isNullPass()
-//        isNullConfirmPass()
-//    }
-//
-//    private fun isNullName() :Boolean{
-//        isNullName = if(binding.Editname.length() == 1){
-//            isNullName()
-//            false
-//        } else {
-//            true
-//        }
-//
-//        return isNullName
-//    }
-//
-//    private fun isNullUser(): Boolean {
-//        isNullUser= if (binding.Edituser.length() == 1){
-//            isNullUser()
-//            false
-//        } else {
-//            true
-//        }
-//
-//        return isNullUser
-//    }
-//
-//    private fun isNullEmail(): Boolean {
-//        isNullEmail = if (binding.Editemail.length() == 1){
-//            isNullEmail()
-//            false
-//        } else {
-//            true
-//        }
-//
-//        return isNullEmail
-//    }
-//
-//    private fun isNullPass(): Boolean {
-//        isNullPass = if (binding.Editpass.length() == 1){
-//            isNullPass()
-//            false
-//        } else{
-//            true
-//        }
-//
-//        return isNullPass
-//    }
-//
-//    private fun isNullConfirmPass(): Boolean {
-//        isNullConfirmPass = if(binding.Editconfirm.length() == 1){
-//            isNullConfirmPass()
-//            false
-//        } else {
-//            true
-//        }
-//
-//        return isNullConfirmPass
-//    }
-//
-//    private fun binding() {
-//        val intent = Intent(activity, activity_home::class.java)
-//        startActivity(intent)
-//    }
-//
-//    private fun nullName(): Boolean {
-//        binding.name.error = "Nama lengkap wajib diisi"
-//        return false
-//    }
-//
-//    private fun nullUser(): Boolean {
-//        binding.user.error = "Username wajib diisi"
-//        return false
-//    }
-//
-//    private fun nullEmail(): Boolean {
-//        binding.email.error = "Email wajib diisi"
-//        return false
-//    }
-//
-//    private fun nullPass(): Boolean {
-//        binding.pass.error = "Password wajib diisi"
-//        return false
-//    }
-//
-//    private fun nullConfirmPass(): Boolean {
-//        binding.confirm.error = "Konfirmasi Password wajib diisi"
-//        return false
-//    }
-//
-//    private fun regexMinName(): Boolean {
-//        binding.name.error = "Nama lengkap minimal 2 karakter"
-//        return false
-//    }
-//
-//    private fun regexMinUser(): Boolean {
-//        binding.user.error = "Username minimal 6 karakter"
-//        return false
-//    }
-//
-//    private fun regexEmail(target:CharSequence?): Boolean {
-//        return !TextUtils.isEmpty(target)&&Patterns.EMAIL_ADDRESS.matcher(target).matches()
-//    }
-//
-//    private fun regexEmailResult(): Boolean {
-//        binding.email.error = "Format email tidak sesuai"
-//        return false
-//    }
-//
-//    private fun regexPass(): Boolean {
-//        binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
-//        return false
-//    }
-//
-//    private fun regexSymbolUser(): Boolean {
-//        binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
-//        return false
-//    }
-//
-//    private fun validatePass(): Boolean {
-//        binding.confirm.error = "Konfirmasi Password tidak sesuai"
-//        return false
-//    }
-//
-//    private fun clearName(): Boolean {
-//        binding.name.isErrorEnabled = false
-//        return true
-//    }
-//
-//    private fun clearUser(): Boolean {
-//        binding.user.isErrorEnabled = false
-//        return true
-//    }
-//
-//    private fun clearEmail(): Boolean {
-//        binding.email.isErrorEnabled = false
-//        return true
-//    }
-//
-//    private fun clearPass(): Boolean {
-//        binding.pass.isErrorEnabled = false
-//        return true
-//    }
-//
-//    private fun clearConfirmPass(): Boolean {
-//        binding.confirm.isErrorEnabled = false
-//        return true
-//    }
+    private fun fullName(){
+        binding.Editname.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!(s?.length ?: 0 >= 1)) {
+                    nullFullName()
+                } else if (!(s.toString().matches(fullNameRegex.toRegex()))) {
+                    regexFullName()
+                } else if (!(s.toString().matches(minTwoCharRegex.toRegex()))) {
+                    regexMinFullname()
+                } else {
+                    clearFullName()
+                }
+            }
+        })
+    }
+
+    private fun username(){
+        binding.Edituser.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!(s?.length ?: 0 >= 1)) {
+                    nullUsername()
+                } else if (!(s.toString().matches(usernameRegex.toRegex()))) {
+                    regexUsername()
+                } else if (!(s.toString().matches(minSixCharRegex.toRegex()))) {
+                    regexMinUsername()
+                } else {
+                    clearUsername()
+                }
+            }
+        })
+    }
+
+    private fun email(){
+        binding.Editemail.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (regexEmail(s)) {
+                    clearEmail()
+                } else if (!(s?.length ?: 0 >= 1)) {
+                    nullEmail()
+                } else {
+                    regexEmailResult()
+                }
+            }
+        })
+    }
+
+    private fun password(){
+        binding.Editpass.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!(s?.length ?: 0 >= 1)) {
+                    nullPassword()
+                } else if (!(s.toString().matches(minSixCharRegex.toRegex()))) {
+                    regexMinPassword()
+                } else if (!(s.toString().matches(passwordRegex.toRegex()))) {
+                    regexPassword()
+                } else {
+                    clearPassword()
+                }
+            }
+        })
+    }
+
+    private fun confirmPassword(){
+        binding.Editconfirm.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString() == binding.Editpass.text.toString()) {
+                    clearConfirmPassword()
+                } else if (!(s?.length ?: 0 >= 1)) {
+                    nullConfirmPassword()
+                } else {
+                    regexConfirmPassword()
+                }
+            }
+        })
+
+    }
+
+    private fun submit(){
+        binding.submit.setOnClickListener{
+            validation()
+        }
+    }
+
+    private fun validation(){
+        nullCheck()
+        validationTrue()
+    }
+
+    private fun validationTrue(){
+        if(isNullFullName() && isNullUsername() && isNullEmail() && isNullPassword() && isNullConfirmPassword()
+            && validName==true && validUsername==true && validEmail==true && validPassword==true && validConfirmPassword==true)
+            binding()
+    }
+
+    private fun binding(){
+        val intent = Intent(activity, activity_home::class.java)
+        startActivity(intent)
+    }
+
+    private fun nullCheck(){
+        isNullFullName()
+        isNullUsername()
+        isNullEmail()
+        isNullPassword()
+        isNullConfirmPassword()
+    }
+
+    private fun isNullFullName(): Boolean{
+        isNullFullName = if (binding.Editname.length() == 0){
+            nullFullName()
+            false
+        } else {
+            true
+        }
+
+        return isNullFullName
+    }
+
+    private fun isNullUsername(): Boolean{
+        isNullUsername = if (binding.Edituser.length() == 0){
+            nullUsername()
+            false
+        } else {
+            true
+        }
+
+        return isNullUsername
+    }
+
+    private fun isNullEmail(): Boolean{
+        isNullEmail = if (binding.Editemail.length() == 0){
+            nullEmail()
+            false
+        } else {
+            true
+        }
+
+        return isNullEmail
+    }
+
+    private fun isNullPassword(): Boolean{
+        isNullPassword = if (binding.Editpass.length() == 0){
+            nullPassword()
+            false
+        } else {
+            true
+        }
+
+        return isNullPassword
+    }
+
+    private fun isNullConfirmPassword(): Boolean{
+        isNullConfirmPassword = if (binding.Editconfirm.length() == 0){
+            nullConfirmPassword()
+            false
+        } else {
+            true
+        }
+
+        return isNullConfirmPassword
+    }
+
+
+    private fun nullFullName(): Boolean {
+        binding.name.error = "Nama lengkap wajib diisi"
+        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        return false
+    }
+
+    private fun nullUsername(): Boolean{
+        binding.user.error = "Username wajib diisi"
+        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        return false
+    }
+
+    private fun nullEmail(): Boolean{
+        binding.email.error = "Email wajib diisi"
+        binding.Editemail.setBackgroundResource(R.drawable.bg_textbox_red)
+        return false
+    }
+
+    private fun nullPassword(): Boolean{
+        binding.pass.error = "Password wajib diisi"
+        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        return false
+    }
+
+    private fun nullConfirmPassword(): Boolean{
+        binding.confirm.error = "Konfirmasi password wajib diisi"
+        binding.Editconfirm.setBackgroundResource(R.drawable.bg_textbox_red)
+        return false
+    }
+
+    private fun regexMinFullname(){
+        binding.name.error = "Nama lengkap minimal berisi 2 karakter"
+        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        validName = false
+    }
+
+    private fun regexFullName(){
+        binding.name.error = "Nama lengkap tidak bisa berisi angka"
+        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        validName = false
+    }
+
+    private fun regexMinUsername(){
+        binding.user.error = "Username minimal berisi 6 karakter"
+        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        validUsername = false
+    }
+
+    private fun regexUsername(){
+        binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
+        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        validUsername = false
+    }
+
+    private fun regexEmail(target: CharSequence?): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()
+    }
+
+    private fun regexEmailResult(){
+        binding.email.error = "Format email tidak sesuai"
+        binding.Editemail.setBackgroundResource(R.drawable.bg_textbox_red)
+        validEmail = false
+    }
+
+    private fun regexMinPassword(){
+        binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
+        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        validPassword=false
+        }
+    private fun regexPassword(){
+        binding.pass.error = "Password minimal berisi 1 huruf kapital dan 1 angka"
+        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        validPassword = false
+    }
+
+    private fun regexConfirmPassword(){
+        binding.confirm.error = "Konfirmasi password tidak sesuai"
+        binding.Editconfirm.setBackgroundResource(R.drawable.bg_textbox_red)
+        validConfirmPassword = false
+    }
+
+    private fun clearFullName(){
+        binding.name.isErrorEnabled = false
+        binding.Editname.setBackgroundResource(R.drawable.bg_selector)
+        validName = true
+    }
+
+    private fun clearUsername(){
+        binding.user.isErrorEnabled = false
+        binding.Edituser.setBackgroundResource(R.drawable.bg_selector)
+        validUsername = true
+    }
+
+    private fun clearEmail(){
+        binding.email.isErrorEnabled = false
+        binding.Editemail.setBackgroundResource(R.drawable.bg_selector)
+        validEmail = true
+    }
+
+    private fun clearPassword(){
+        binding.pass.isErrorEnabled = false
+        binding.Editpass.setBackgroundResource(R.drawable.bg_selector)
+        validPassword = true
+    }
+
+    private fun clearConfirmPassword(){
+        binding.confirm.isErrorEnabled = false
+        binding.Editconfirm.setBackgroundResource(R.drawable.bg_selector)
+        validConfirmPassword=true
+        }
 
     override fun onDestroyView() {
         super.onDestroyView()
