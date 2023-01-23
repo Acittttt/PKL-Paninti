@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Edituser"
+                    android:id="@+id/editUser"
                     style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/user">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Editpass"
+                    android:id="@+id/editPass"
                     style="@style/Widget.Paninti.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,10 +130,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rating_bar_height"
             app:layout_constraintTop_toBottomOf="@+id/submit"
-            app:layout_constraintStart_toEndOf="@+id/Tdiv" />
+            app:layout_constraintStart_toEndOf="@+id/tDiv" />
 
         <TextView
-            android:id="@+id/Tdiv"
+            android:id="@+id/tDiv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/Tdiv"
@@ -161,10 +161,10 @@
             android:fontFamily="@font/roboto"
             android:drawableLeft="@drawable/icon_google"
             app:cornerRadius="@dimen/corner"
-            app:layout_constraintTop_toBottomOf="@+id/Tdiv"/>
+            app:layout_constraintTop_toBottomOf="@+id/tDiv"/>
 
         <TextView
-            android:id="@+id/Regis"
+            android:id="@+id/regis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/option_button_height"

@@ -19,4 +19,20 @@
     <string name="pr">Jenis Kelamin</string>
     <string name="boy">Laki-laki</string>
     <string name="girl">Perempuan</string>
+    
+    <!-- Validasi Error -->
+    <string name="valUser">Username wajib diisi</string>
+    <string name="valPass">Password wajib diisi</string>
+    <string name="valName">Nama lengkap wajib diisi</string>
+    <string name="valEmail">Email wajib diisi</string>
+    <string name="valConfirm">Konfirmasi password wajib diisi</string>
+    <string name="regexFullName">Nama lengkap minimal berisi 2 karakter</string>
+    <string name="regexName">Nama lengkap tidak bisa berisi angka</string>
+    <string name="regexMinUser">Username minimal berisi 6 karakter</string>
+    <string name="regexUser">Username tidak bisa menggunakan simbol selain . dan _</string>
+    <string name="regexEmail">Format email tidak sesuai</string>
+    <string name="regexMinPass">Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka</string>
+    <string name="regexPass">Password minimal berisi 1 huruf kapital dan 1 angka</string>
+    <string name="regexConfirm">Konfirmasi password tidak sesuai</string>
+
 </resources>

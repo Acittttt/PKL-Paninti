@@ -84,7 +84,7 @@ class fragment_register : Fragment() {
     }
 
     private fun fullName(){
-        binding.Editname.addTextChangedListener(object : TextWatcher {
+        binding.editName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -102,7 +102,7 @@ class fragment_register : Fragment() {
     }
 
     private fun username(){
-        binding.Edituser.addTextChangedListener(object : TextWatcher {
+        binding.editUser.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -120,7 +120,7 @@ class fragment_register : Fragment() {
     }
 
     private fun email(){
-        binding.Editemail.addTextChangedListener(object : TextWatcher {
+        binding.editEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -136,7 +136,7 @@ class fragment_register : Fragment() {
     }
 
     private fun password(){
-        binding.Editpass.addTextChangedListener(object : TextWatcher {
+        binding.editPass.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -154,11 +154,11 @@ class fragment_register : Fragment() {
     }
 
     private fun confirmPassword(){
-        binding.Editconfirm.addTextChangedListener(object : TextWatcher {
+        binding.editConfirm.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if (s.toString() == binding.Editpass.text.toString()) {
+                if (s.toString() == binding.editPass.text.toString()) {
                     clearConfirmPassword()
                 } else if (!(s?.length ?: 0 >= 1)) {
                     nullConfirmPassword()
@@ -201,7 +201,7 @@ class fragment_register : Fragment() {
     }
 
     private fun isNullFullName(): Boolean{
-        isNullFullName = if (binding.Editname.length() == 0){
+        isNullFullName = if (binding.editName.length() == 0){
             nullFullName()
             false
         } else {
@@ -212,7 +212,7 @@ class fragment_register : Fragment() {
     }
 
     private fun isNullUsername(): Boolean{
-        isNullUsername = if (binding.Edituser.length() == 0){
+        isNullUsername = if (binding.editUser.length() == 0){
             nullUsername()
             false
         } else {
@@ -223,7 +223,7 @@ class fragment_register : Fragment() {
     }
 
     private fun isNullEmail(): Boolean{
-        isNullEmail = if (binding.Editemail.length() == 0){
+        isNullEmail = if (binding.editEmail.length() == 0){
             nullEmail()
             false
         } else {
@@ -234,7 +234,7 @@ class fragment_register : Fragment() {
     }
 
     private fun isNullPassword(): Boolean{
-        isNullPassword = if (binding.Editpass.length() == 0){
+        isNullPassword = if (binding.editPass.length() == 0){
             nullPassword()
             false
         } else {
@@ -245,7 +245,7 @@ class fragment_register : Fragment() {
     }
 
     private fun isNullConfirmPassword(): Boolean{
-        isNullConfirmPassword = if (binding.Editconfirm.length() == 0){
+        isNullConfirmPassword = if (binding.editConfirm.length() == 0){
             nullConfirmPassword()
             false
         } else {
@@ -257,56 +257,56 @@ class fragment_register : Fragment() {
 
 
     private fun nullFullName(): Boolean {
-        binding.name.error = "Nama lengkap wajib diisi"
-        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.name.error = getString(R.string.valName)
+        binding.editName.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun nullUsername(): Boolean{
-        binding.user.error = "Username wajib diisi"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.user.error = getString(R.string.valUser)
+        binding.editUser.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun nullEmail(): Boolean{
-        binding.email.error = "Email wajib diisi"
-        binding.Editemail.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.email.error = getString(R.string.valEmail)
+        binding.editEmail.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun nullPassword(): Boolean{
-        binding.pass.error = "Password wajib diisi"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.pass.error = getString(R.string.valPass)
+        binding.editPass.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun nullConfirmPassword(): Boolean{
-        binding.confirm.error = "Konfirmasi password wajib diisi"
-        binding.Editconfirm.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.confirm.error = getString(R.string.valConfirm)
+        binding.editConfirm.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun regexMinFullname(){
-        binding.name.error = "Nama lengkap minimal berisi 2 karakter"
-        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.name.error = getString(R.string.regexFullName)
+        binding.editName.setBackgroundResource(R.drawable.bg_textbox_red)
         validName = false
     }
 
     private fun regexFullName(){
-        binding.name.error = "Nama lengkap tidak bisa berisi angka"
-        binding.Editname.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.name.error = getString(R.string.regexName)
+        binding.editName.setBackgroundResource(R.drawable.bg_textbox_red)
         validName = false
     }
 
     private fun regexMinUsername(){
-        binding.user.error = "Username minimal berisi 6 karakter"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.user.error = getString(R.string.regexMinUser)
+        binding.editUser.setBackgroundResource(R.drawable.bg_textbox_red)
         validUsername = false
     }
 
     private fun regexUsername(){
-        binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.user.error = getString(R.string.regexUser)
+        binding.editUser.setBackgroundResource(R.drawable.bg_textbox_red)
         validUsername = false
     }
 
@@ -315,55 +315,55 @@ class fragment_register : Fragment() {
     }
 
     private fun regexEmailResult(){
-        binding.email.error = "Format email tidak sesuai"
-        binding.Editemail.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.email.error = getString(R.string.regexEmail)
+        binding.editEmail.setBackgroundResource(R.drawable.bg_textbox_red)
         validEmail = false
     }
 
     private fun regexMinPassword(){
-        binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.pass.error = getString(R.string.regexMinPass)
+        binding.editPass.setBackgroundResource(R.drawable.bg_textbox_red)
         validPassword=false
         }
     private fun regexPassword(){
-        binding.pass.error = "Password minimal berisi 1 huruf kapital dan 1 angka"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.pass.error = getString(R.string.regexPass)
+        binding.editPass.setBackgroundResource(R.drawable.bg_textbox_red)
         validPassword = false
     }
 
     private fun regexConfirmPassword(){
-        binding.confirm.error = "Konfirmasi password tidak sesuai"
-        binding.Editconfirm.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.confirm.error = getString(R.string.regexConfirm)
+        binding.editConfirm.setBackgroundResource(R.drawable.bg_textbox_red)
         validConfirmPassword = false
     }
 
     private fun clearFullName(){
         binding.name.isErrorEnabled = false
-        binding.Editname.setBackgroundResource(R.drawable.bg_selector)
+        binding.editName.setBackgroundResource(R.drawable.bg_selector)
         validName = true
     }
 
     private fun clearUsername(){
         binding.user.isErrorEnabled = false
-        binding.Edituser.setBackgroundResource(R.drawable.bg_selector)
+        binding.editUser.setBackgroundResource(R.drawable.bg_selector)
         validUsername = true
     }
 
     private fun clearEmail(){
         binding.email.isErrorEnabled = false
-        binding.Editemail.setBackgroundResource(R.drawable.bg_selector)
+        binding.editEmail.setBackgroundResource(R.drawable.bg_selector)
         validEmail = true
     }
 
     private fun clearPassword(){
         binding.pass.isErrorEnabled = false
-        binding.Editpass.setBackgroundResource(R.drawable.bg_selector)
+        binding.editPass.setBackgroundResource(R.drawable.bg_selector)
         validPassword = true
     }
 
     private fun clearConfirmPassword(){
         binding.confirm.isErrorEnabled = false
-        binding.Editconfirm.setBackgroundResource(R.drawable.bg_selector)
+        binding.editConfirm.setBackgroundResource(R.drawable.bg_selector)
         validConfirmPassword=true
         }
 

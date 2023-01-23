@@ -28,8 +28,6 @@ class fragment_login : Fragment() {
     private var isNullUsername = false
     private var isNullPassword = false
 
-    val usernameRegex = "[a-zA-Z0-9._]+"
-    val passwordRegex ="^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
     var validUsername = false
     var validPassword = false
 
@@ -50,7 +48,7 @@ class fragment_login : Fragment() {
     }
 
     private fun view(){
-        val spannable = SpannableStringBuilder(binding.Regis.text.toString())
+        val spannable = SpannableStringBuilder(binding.regis.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#4496B3"))
 
         val clickableSpan = object : ClickableSpan() {
@@ -62,8 +60,8 @@ class fragment_login : Fragment() {
         }
         spannable.setSpan(blueColor, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannable.setSpan(clickableSpan, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.Regis.text = spannable
-        binding.Regis.movementMethod = LinkMovementMethod.getInstance()
+        binding.regis.text = spannable
+        binding.regis.movementMethod = LinkMovementMethod.getInstance()
 
         username()
         password()
@@ -71,7 +69,7 @@ class fragment_login : Fragment() {
     }
 
     private fun username(){
-        binding.Edituser.addTextChangedListener(object : TextWatcher {
+        binding.editUser.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -85,7 +83,7 @@ class fragment_login : Fragment() {
     }
 
     private fun password(){
-        binding.Editpass.addTextChangedListener(object : TextWatcher {
+        binding.editPass.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -125,7 +123,7 @@ class fragment_login : Fragment() {
     }
 
     private fun isNullUsername(): Boolean{
-        isNullUsername = if (binding.Edituser.length() == 0){
+        isNullUsername = if (binding.editUser.length() == 0){
             nullUsername()
             false
         } else {
@@ -136,7 +134,7 @@ class fragment_login : Fragment() {
     }
 
     private fun isNullPassword(): Boolean{
-        isNullPassword = if (binding.Editpass.length() == 0){
+        isNullPassword = if (binding.editPass.length() == 0){
             nullPassword()
             false
         } else {
@@ -147,135 +145,28 @@ class fragment_login : Fragment() {
     }
 
     private fun nullUsername(): Boolean{
-        binding.user.error = "Username wajib diisi"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.user.error = getString(R.string.valUser)
+        binding.editUser.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
 
     private fun nullPassword(): Boolean{
-        binding.pass.error = "Password wajib diisi"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
+        binding.pass.error = getString(R.string.valPass)
+        binding.editPass.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
-    }
-
-    private fun regexMinUsername(){
-        binding.user.error = "Username minimal berisi 6 karakter"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
-        validUsername = false
-    }
-
-    private fun regexUsername(){
-        binding.user.error = "Username tidak bisa menggunakan simbol selain . dan _"
-        binding.Edituser.setBackgroundResource(R.drawable.bg_textbox_red)
-        validUsername = false
-    }
-
-    private fun regexMinPassword(){
-        binding.pass.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
-        validPassword=false
-    }
-    private fun regexPassword(){
-        binding.pass.error = "Password minimal berisi 1 huruf kapital dan 1 angka"
-        binding.Editpass.setBackgroundResource(R.drawable.bg_textbox_red)
-        validPassword = false
     }
 
     private fun clearUsername(){
         binding.user.isErrorEnabled = false
-        binding.Edituser.setBackgroundResource(R.drawable.bg_selector)
+        binding.editUser.setBackgroundResource(R.drawable.bg_selector)
         validUsername = true
     }
 
     private fun clearPassword(){
         binding.pass.isErrorEnabled = false
-        binding.Editpass.setBackgroundResource(R.drawable.bg_selector)
+        binding.editPass.setBackgroundResource(R.drawable.bg_selector)
         validPassword = true
     }
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-//        val view = binding.root
-//
-//        var validUser = false
-//        var validPass = false
-//
-//
-//        val spannable = SpannableStringBuilder(binding.Regis.text.toString())
-//        val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
-//        val clickableSpan = object : ClickableSpan() {
-//            override fun onClick(widget: View) {
-//                val fragment = fragment_register()
-//                val transaction = fragmentManager?.beginTransaction()
-//                transaction?.replace(R.id.frame_layout,fragment)?.commit()
-//            }
-//        }
-//        spannable.setSpan(blueColor, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        spannable.setSpan(clickableSpan, 18, 33, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        binding.Regis.text = spannable
-//        binding.Regis.movementMethod = LinkMovementMethod.getInstance()
-//
-//        binding.Editpass.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//                if(s?.length ?: 0 >= 1) {
-//                    pass.isErrorEnabled = false
-//                    validPass = true
-//                } else {
-//                    pass.error = "Password wajib diisi"
-//                }
-//            }
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//            }
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//
-//            }
-//        })
-//
-//        binding.Edituser.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//                if(s?.length ?: 0 >= 1) {
-//                    user.isErrorEnabled = false
-//                    validUser = true
-//                } else {
-//                    user.error = "Email atau Username wajib diisi"
-//                }
-//            }
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//            }
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//
-//            }
-//        })
-//
-//        binding.submit.setOnClickListener{
-//            if(binding.Edituser.text.toString() == ""){
-//                binding.user.error = "Email atau Username wajib diisi"
-//                validUser = false
-//            }
-//            if(binding.Editpass.text.toString() == "") {
-//                binding.pass.error = "Password wajib diisi"
-//                validPass = false
-//            }
-//
-//            if(validUser == true && validPass == true ){
-//                val intent = Intent (getActivity(), activity_home::class.java)
-//                getActivity()?.startActivity(intent)
-//            } else {
-//
-//            }
-//        }
-//        return view
-//
-//
-//    }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
