@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment_weather"
+    tools:context=".fragment_weather_home"
     android:background="@color/weather">
 
     <ScrollView
@@ -19,14 +18,15 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="650dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/black">
                     <ImageView
                         android:id="@+id/menu"
                         android:layout_width="match_parent"
@@ -35,15 +35,27 @@
                         android:textAlignment="center"
                         android:layout_marginTop="@dimen/large_margin"
                         android:layout_marginStart="@dimen/start"
-                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/celci"
                         app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/celci"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Maven2"
+                        android:textColor="@color/white"
+                        android:text="@string/celci"
+                        android:layout_marginTop="@dimen/checkbox_height"
+                        android:layout_marginStart="@dimen/variant_vertical_divider_height"
+                        app:layout_constraintEnd_toStartOf="@+id/menu"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/calendar"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/avatar_height"
+                        android:layout_height="@dimen/medium_start"
                         android:layout_marginTop="@dimen/medium_margin"
-                        android:src="@drawable/icon_calendar"
+                        android:src="@drawable/icon_loc"
                         android:layout_marginStart="@dimen/large_start"
                         android:layout_marginEnd="@dimen/large_end"
                         app:layout_constraintTop_toBottomOf="@+id/menu"
@@ -53,72 +65,58 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/medium_margin"
-                        android:textAppearance="@style/TextAppearance.Maven3"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:textAppearance="@style/TextAppearance.Maven4"
                         android:textStyle="bold"
-                        android:text="@string/days"
+                        android:text="@string/loc"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:layout_marginStart="@dimen/small_text"
+                        android:layout_marginStart="@dimen/medium_start"
                         app:layout_constraintStart_toEndOf="@id/calendar"
                         app:layout_constraintTop_toBottomOf="@+id/menu" />
 
                     <ImageView
                         android:id="@+id/weather"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/medium"
+                        android:layout_height="@dimen/large_end"
                         android:src="@drawable/icon_weather"
-                        android:layout_marginEnd="@dimen/large_end"
                         android:layout_marginTop="@dimen/rating_bar_height"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView"
-                        app:layout_constraintEnd_toStartOf="@id/day"/>
-
-                    <TextView
-                        android:id="@+id/day"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dy"
-                        android:textColor="@color/white"
-                        android:textAppearance="@style/TextAppearance.Title"
-                        android:layout_marginTop="@dimen/rating_bar_height"
-                        android:layout_marginStart="@dimen/extra_large_start"
-                        app:layout_constraintTop_toBottomOf="@id/textView"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        app:layout_constraintEnd_toStartOf="parent"/>
 
                     <TextView
                         android:id="@+id/num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/num"
+                        android:text="@string/temp1"
                         android:textColor="@color/white"
-                        android:textAppearance="@style/TextAppearance.Large"
-                        android:layout_marginStart="@dimen/extra_large_start"
-                        app:layout_constraintTop_toBottomOf="@id/day"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
-
-                    <TextView
-                        android:id="@+id/temp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/temp"
-                        android:textColor="@color/white"
-                        android:textAppearance="@style/TextAppearance.Medium"
-                        android:layout_marginStart="@dimen/super_large_start"
-                        android:layout_marginTop="@dimen/avatar_user_article_height"
-                        app:layout_constraintTop_toBottomOf="@id/day"
-                        app:layout_constraintStart_toEndOf="@id/num"/>
+                        android:textAppearance="@style/TextAppearance.Maven5"
+                        android:layout_marginStart="@dimen/large_medium"
+                        app:layout_constraintTop_toBottomOf="@id/weather"
+                        app:layout_constraintStart_toEndOf="parent"/>
 
                     <TextView
                         android:id="@+id/weat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/weather"
+                        android:textColor="@color/font"
+                        android:textAppearance="@style/TextAppearance.Maven6"
+                        android:layout_marginStart="@dimen/extra_medium"
+                        app:layout_constraintTop_toBottomOf="@id/num"
+                        app:layout_constraintStart_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date"
                         android:textColor="@color/white"
-                        android:textAppearance="@style/TextAppearance.Title"
-                        android:layout_marginStart="@dimen/extra_large_start"
-                        app:layout_constraintTop_toBottomOf="@id/temp"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:textAppearance="@style/TextAppearance.Caption2"
+                        android:layout_marginStart="@dimen/small_end"
+                        app:layout_constraintTop_toBottomOf="@id/weat"
+                        app:layout_constraintStart_toEndOf="parent"/>
 
                     <com.google.android.material.divider.MaterialDivider
                         android:id="@+id/div"
@@ -128,7 +126,7 @@
                         app:dividerColor="@color/div"
                         android:layout_marginStart="@dimen/image_brand_height"
                         android:layout_marginEnd="@dimen/image_brand_height"
-                        app:layout_constraintTop_toBottomOf="@+id/weather" />
+                        app:layout_constraintTop_toBottomOf="@+id/date" />
 
                     <ImageView
                         android:id="@+id/iconWind"
@@ -227,25 +225,63 @@
                         android:textColor="@color/div"
                         android:textAppearance="@style/TextAppearance.Body3"
                         android:textAlignment="textEnd"
-                        android:layout_marginStart="@dimen/start3"
+                        android:layout_marginStart="@dimen/large_start"
                         app:layout_constraintTop_toBottomOf="@id/total"
                         app:layout_constraintStart_toEndOf="@id/weather"/>
-
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/today"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.Title3"
+                android:layout_marginTop="@dimen/rating_bar_height"
+                android:layout_marginStart="@dimen/medium_start"
+                app:layout_constraintTop_toBottomOf="@id/header"
+                app:layout_constraintStart_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/dys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dys"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.Subtitle2"
+                android:layout_marginTop="@dimen/option_button_icon_height"
+                android:layout_marginStart="@dimen/start4"
+                app:layout_constraintTop_toBottomOf="@id/header"
+                app:layout_constraintEnd_toStartOf="@+id/day"/>
+
+            <ImageView
+                android:id="@+id/iconNext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/medium_start"
+                android:layout_marginTop="@dimen/chip_icon_size"
+                android:src="@drawable/icon_next"
+                android:layout_marginStart="@dimen/start6"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                app:layout_constraintStart_toEndOf="@+id/dys"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="2dp"
-                tools:listitem="@layout/fragment_list"
-                app:layout_constraintTop_toBottomOf="@+id/header"/>
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/fragment_list_item"
+                app:layout_constraintTop_toBottomOf="@+id/day"
+                android:layout_marginStart="@dimen/small_margin"/>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+
 </FrameLayout>

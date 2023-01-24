@@ -14,6 +14,6 @@ class activity_home : AppCompatActivity() {
         val view = binding.root
         setContentView(R.layout.activity_home)
 
-        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment_weather()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment_weather_home()).commit()
     }
 }

@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
 import com.acit.pklpaninti.databinding.FragmentWeatherBinding
 
-
-
-
 class fragment_weather : Fragment() {
     private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!

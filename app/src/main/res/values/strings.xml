@@ -70,4 +70,14 @@
     <string name="temp6">24°</string>
     <string name="temp7">30°</string>
 
+    <string name="celci">°C</string>
+    <string name="loc">Minsk</string>
+    <string name="date">Monday, 17 May</string>
+    <string name="today">Today</string>
+    <string name="dys">7 days</string>
+    <string name="time">11:00</string>
+    <string name="time2">10:00</string>
+    <string name="time3">12:00</string>
+    <string name="time4">01:00</string>
+
 </resources>

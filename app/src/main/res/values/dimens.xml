@@ -104,6 +104,8 @@
     <dimen name="super_large_start">260dp</dimen>
     <dimen name="medium">120dp</dimen>
     <dimen name="extra_medium">130dp</dimen>
+    <dimen name="large_medium">140dp</dimen>
+    <dimen name="small_end">160dp</dimen>
     <dimen name="large_end">180dp</dimen>
     <dimen name="medium_text">46dp</dimen>
     <dimen name="small_text">35dp</dimen>
@@ -111,4 +113,12 @@
     <dimen name="start_water">195dp</dimen>
     <dimen name="start2">330dp</dimen>
     <dimen name="start3">76dp</dimen>
+    <dimen name="start4">300dp</dimen>
+    <dimen name="start5">350dp</dimen>
+    <dimen name="start6">320dp</dimen>
+    <dimen name="height">75dp</dimen>
+    <dimen name="custom_height">85dp</dimen>
+    <dimen name="custom_start">32dp</dimen>
+    <dimen name="custom_start2">33dp</dimen>
+    <dimen name="custom_margin">6dp</dimen>
 </resources>
