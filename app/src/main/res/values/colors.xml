@@ -17,4 +17,10 @@
     <color name="box">#33B5E5</color>
     <color name="bg">#00000000</color>
     <color name="alert_error">#FF4444</color>
+    <color name="start">#06C7F1</color>
+    <color name="center">#07B9E0</color>
+    <color name="end">#0648F1</color>
+    <color name="weather">#0C0926</color>
+    <color name="div">#B3E8E8E8</color>
+    <color name="name">#E5E5E5</color>
 </resources>

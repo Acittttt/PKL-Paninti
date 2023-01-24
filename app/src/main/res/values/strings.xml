@@ -19,7 +19,7 @@
     <string name="pr">Jenis Kelamin</string>
     <string name="boy">Laki-laki</string>
     <string name="girl">Perempuan</string>
-    
+
     <!-- Validasi Error -->
     <string name="valUser">Username wajib diisi</string>
     <string name="valPass">Password wajib diisi</string>
@@ -34,5 +34,40 @@
     <string name="regexMinPass">Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka</string>
     <string name="regexPass">Password minimal berisi 1 huruf kapital dan 1 angka</string>
     <string name="regexConfirm">Konfirmasi password tidak sesuai</string>
+
+    <!-- Weather -->
+    <string name="days">7 Days</string>
+    <string name="dy">Tomorrow</string>
+    <string name="day">Monday</string>
+    <string name="weather">Cloudy</string>
+    <string name="num">24</string>
+    <string name="temperatur">27°</string>
+    <string name="temp">/17°</string>
+    <string name="speed">13 km/h</string>
+    <string name="wind">Wind</string>
+    <string name="persen">24%</string>
+    <string name="humi">Humidity</string>
+    <string name="total">82%</string>
+    <string name="rain">Chance of rain</string>
+
+    <string name="day1">Monday</string>
+    <string name="day2">Tuesday</string>
+    <string name="day3">Wednesday</string>
+    <string name="day4">Thursday</string>
+    <string name="day5">Friday</string>
+    <string name="day6">Saturday</string>
+    <string name="day7">Sunday</string>
+
+    <string name="wheat2">Rainy</string>
+    <string name="wheat3">Strom</string>
+    <string name="wheat4">Sunny</string>
+
+    <string name="temp1">29°</string>
+    <string name="temp2">24°</string>
+    <string name="temp3">17°</string>
+    <string name="temp4">18°</string>
+    <string name="temp5">22°</string>
+    <string name="temp6">24°</string>
+    <string name="temp7">30°</string>
 
 </resources>
