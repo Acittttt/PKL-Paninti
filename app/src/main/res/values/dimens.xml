@@ -95,6 +95,7 @@
     <!-- Corner Radius -->
     <dimen name="corner">17px</dimen>
     <dimen name="corner2">25dp</dimen>
+    <dimen name="corner3">34dp</dimen>
 
     <!-- Weather Custom -->
     <dimen name="medium_start">30dp</dimen>

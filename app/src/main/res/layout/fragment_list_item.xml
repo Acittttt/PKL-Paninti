@@ -9,10 +9,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="93dp"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:layout_margin="@dimen/small_margin"
         app:cardBackgroundColor="@color/list"
-        app:cardCornerRadius="@dimen/corner2"
+        app:cardCornerRadius="@dimen/corner3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
