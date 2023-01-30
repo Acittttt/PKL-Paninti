@@ -7,9 +7,10 @@
     tools:context=".fragment_weather_home"
     android:background="@color/weather">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -254,34 +255,36 @@
                 android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.Subtitle2"
                 android:layout_marginTop="@dimen/option_button_icon_height"
-                android:layout_marginStart="@dimen/start4"
+                android:layout_marginStart="@dimen/start6"
                 app:layout_constraintTop_toBottomOf="@id/header"
                 app:layout_constraintEnd_toStartOf="@+id/day"/>
 
             <ImageView
                 android:id="@+id/iconNext"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/medium_start"
-                android:layout_marginTop="@dimen/chip_icon_size"
+                android:layout_height="@dimen/chip_brand_icon_size"
+                android:layout_marginTop="@dimen/large_margin"
                 android:src="@drawable/icon_next"
-                android:layout_marginStart="@dimen/start6"
+                android:layout_marginStart="@dimen/start5"
                 app:layout_constraintTop_toBottomOf="@+id/header"
                 app:layout_constraintStart_toEndOf="@+id/dys"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/zero_dp"
                 android:orientation="horizontal"
+                app:flow_horizontalAlign="center"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/fragment_list_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/day"
-                android:layout_marginStart="@dimen/small_margin"/>
-
+                tools:listitem="@layout/fragment_list_item" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </FrameLayout>

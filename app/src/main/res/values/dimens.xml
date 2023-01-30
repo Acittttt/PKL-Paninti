@@ -122,4 +122,7 @@
     <dimen name="custom_start">32dp</dimen>
     <dimen name="custom_start2">33dp</dimen>
     <dimen name="custom_margin">6dp</dimen>
+    <dimen name="custom_start3">24dp</dimen>
+    <dimen name="custom_start4">22dp</dimen>
+    <dimen name="custom_image_height">45dp</dimen>
 </resources>
