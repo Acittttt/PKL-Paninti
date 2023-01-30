@@ -24,21 +24,22 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/large_margin"
             android:src="@drawable/icon_google"
-            android:layout_marginStart="@dimen/extra_medium"
+            android:layout_marginStart="@dimen/color_product_select_variant"
             android:layout_marginTop="@dimen/avatar_stack_space"
             app:layout_constraintStart_toStartOf="@+id/day"
+            app:layout_constraintEnd_toEndOf="@+id/weather"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/option_button_height"
             android:layout_marginTop="@dimen/rating_bar_height"
             android:text="@string/weather"
             android:textAppearance="@style/TextAppearance.Maven"
             android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintStart_toStartOf="@+id/icon"
+            app:layout_constraintEnd_toEndOf="@+id/temp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -49,8 +50,8 @@
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.Body"
             android:layout_marginTop="@dimen/rating_bar_height"
-            android:layout_marginStart="@dimen/large_start"
-            app:layout_constraintStart_toStartOf="@+id/weather"
+            android:layout_marginEnd="@dimen/icon_bookmark_height"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
 

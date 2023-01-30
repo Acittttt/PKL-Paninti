@@ -28,27 +28,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
+
                     <ImageView
                         android:id="@+id/menu"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
+                        android:layout_marginEnd="@dimen/zero_dp"
+                        android:layout_marginTop="@dimen/large_margin"
                         android:src="@drawable/icon_menu"
                         android:textAlignment="center"
-                        android:layout_marginTop="@dimen/large_margin"
-                        android:layout_marginStart="@dimen/start"
-                        app:layout_constraintStart_toEndOf="@id/celci"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/celci"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/toolbar_elevation"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/celci"
                         android:textAppearance="@style/TextAppearance.Maven2"
                         android:textColor="@color/white"
-                        android:text="@string/celci"
-                        android:layout_marginTop="@dimen/checkbox_height"
-                        android:layout_marginStart="@dimen/variant_vertical_divider_height"
-                        app:layout_constraintEnd_toStartOf="@+id/menu"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
@@ -56,23 +57,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/medium_start"
                         android:layout_marginTop="@dimen/medium_margin"
-                        android:src="@drawable/icon_loc"
-                        android:layout_marginStart="@dimen/large_start"
+                        android:layout_marginStart="@dimen/medium"
                         android:layout_marginEnd="@dimen/large_end"
-                        app:layout_constraintTop_toBottomOf="@+id/menu"
-                        app:layout_constraintEnd_toStartOf="@+id/textView"/>
+                        android:src="@drawable/icon_loc"
+                        app:layout_constraintEnd_toStartOf="@+id/textView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/menu" />
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/medium_start"
                         android:layout_marginTop="@dimen/screen_margin"
-                        android:textAppearance="@style/TextAppearance.Maven4"
-                        android:textStyle="bold"
                         android:text="@string/loc"
                         android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Maven4"
                         android:textColor="@color/white"
-                        android:layout_marginStart="@dimen/medium_start"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/calendar"
                         app:layout_constraintTop_toBottomOf="@+id/menu" />
 
@@ -88,186 +91,186 @@
 
                     <TextView
                         android:id="@+id/num"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/temp1"
-                        android:textColor="@color/white"
                         android:textAppearance="@style/TextAppearance.Maven5"
-                        android:layout_marginStart="@dimen/large_medium"
-                        app:layout_constraintTop_toBottomOf="@id/weather"
-                        app:layout_constraintStart_toEndOf="parent"/>
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weather" />
 
                     <TextView
                         android:id="@+id/weat"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/weather"
-                        android:textColor="@color/font"
                         android:textAppearance="@style/TextAppearance.Maven6"
-                        android:layout_marginStart="@dimen/medium"
-                        app:layout_constraintTop_toBottomOf="@id/num"
-                        app:layout_constraintStart_toEndOf="parent"/>
+                        android:textColor="@color/font"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/num" />
 
                     <TextView
                         android:id="@+id/date"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
-                        android:textColor="@color/white"
                         android:textAppearance="@style/TextAppearance.Caption2"
-                        android:layout_marginStart="@dimen/small_end"
-                        app:layout_constraintTop_toBottomOf="@id/weat"
-                        app:layout_constraintStart_toEndOf="parent"/>
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weat" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:id="@+id/div"
-                        android:layout_width="match_parent"
+                        android:layout_width="@dimen/zero_dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/rating_bar_height"
+                        android:layout_marginStart="@dimen/medium_start"
+                        android:layout_marginEnd="@dimen/medium_start"
                         app:dividerColor="@color/div"
-                        android:layout_marginStart="@dimen/image_brand_height"
-                        android:layout_marginEnd="@dimen/image_brand_height"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/date" />
 
                     <ImageView
                         android:id="@+id/iconWind"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:layout_marginStart="@dimen/medium_text"
                         android:src="@drawable/icon_wind"
-                        android:layout_marginStart="@dimen/image_brand_height"
-                        android:layout_marginEnd="@dimen/start"
-                        app:layout_constraintTop_toBottomOf="@+id/div"
-                        app:layout_constraintEnd_toStartOf="@+id/iconWater"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/speed"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/speed"
-                        android:textColor="@color/name"
-                        android:textAppearance="@style/TextAppearance.Body3"
                         android:layout_marginStart="@dimen/medium_text"
-                        app:layout_constraintTop_toBottomOf="@id/iconWind"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:text="@string/speed"
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iconWind" />
 
                     <TextView
                         android:id="@+id/wind"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/wind"
-                        android:textColor="@color/div"
-                        android:textAppearance="@style/TextAppearance.Body3"
                         android:layout_marginStart="@dimen/med_text"
-                        app:layout_constraintTop_toBottomOf="@id/speed"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:text="@string/wind"
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/div"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/speed" />
 
                     <ImageView
                         android:id="@+id/iconWater"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
-                        android:layout_marginStart="@dimen/image_brand_height"
-                        android:layout_marginEnd="@dimen/image_brand_height"
                         android:layout_marginTop="@dimen/medium_margin"
                         android:src="@drawable/icon_water"
-                        app:layout_constraintStart_toEndOf="@+id/iconWind"
+                        app:layout_constraintStart_toStartOf="@+id/iconWind"
+                        app:layout_constraintEnd_toEndOf="@+id/iconRain"
                         app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/persen"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/chip_brand_icon_size"
                         android:text="@string/persen"
-                        android:textColor="@color/name"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/start_water"
-                        app:layout_constraintTop_toBottomOf="@id/iconWater"
-                        app:layout_constraintStart_toEndOf="@id/speed"/>
+                        android:textColor="@color/name"
+                        app:layout_constraintStart_toStartOf="@id/speed"
+                        app:layout_constraintEnd_toEndOf="@id/total"
+                        app:layout_constraintTop_toBottomOf="@id/iconWater" />
 
                     <TextView
                         android:id="@+id/water"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/humi"
-                        android:textColor="@color/div"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/large_end"
-                        app:layout_constraintTop_toBottomOf="@id/persen"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:textColor="@color/div"
+                        app:layout_constraintStart_toStartOf="@id/wind"
+                        app:layout_constraintEnd_toEndOf="@id/rain"
+                        app:layout_constraintTop_toBottomOf="@id/persen" />
 
 
                     <ImageView
                         android:id="@+id/iconRain"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:layout_marginEnd="40dp"
                         android:src="@drawable/icon_rain"
-                        android:layout_marginStart="@dimen/start"
-                        android:layout_marginEnd="@dimen/image_brand_height"
-                        app:layout_constraintTop_toBottomOf="@+id/div"
-                        app:layout_constraintStart_toEndOf="@+id/iconWind"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/total"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/total"
-                        android:textColor="@color/name"
+                        android:layout_marginEnd="@dimen/custom_text"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/start2"
-                        app:layout_constraintTop_toBottomOf="@id/iconRain"
-                        app:layout_constraintStart_toEndOf="@id/persen"/>
+                        android:textColor="@color/name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iconRain" />
 
                     <TextView
                         android:id="@+id/rain"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="@string/rain"
-                        android:textColor="@color/div"
-                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:layout_marginEnd="@dimen/color_product_select_variant"
                         android:textAlignment="textEnd"
-                        android:layout_marginStart="@dimen/large_start"
-                        app:layout_constraintTop_toBottomOf="@id/total"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/div"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/total"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:id="@+id/day"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/today"
-                android:textColor="@color/white"
-                android:textAppearance="@style/TextAppearance.Title3"
-                android:layout_marginTop="@dimen/rating_bar_height"
                 android:layout_marginStart="@dimen/medium_start"
-                app:layout_constraintTop_toBottomOf="@id/header"
-                app:layout_constraintStart_toEndOf="parent"/>
+                android:layout_marginTop="@dimen/rating_bar_height"
+                android:text="@string/today"
+                android:textAppearance="@style/TextAppearance.Title3"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header" />
 
             <TextView
                 android:id="@+id/dys"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dys"
-                android:textColor="@color/white"
-                android:textAppearance="@style/TextAppearance.Subtitle2"
                 android:layout_marginTop="@dimen/option_button_icon_height"
-                android:layout_marginStart="@dimen/start6"
-                app:layout_constraintTop_toBottomOf="@id/header"
-                app:layout_constraintEnd_toStartOf="@+id/day"/>
+                android:layout_marginEnd="40dp"
+                android:text="@string/dys"
+                android:textAppearance="@style/TextAppearance.Subtitle2"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/iconNext"
+                app:layout_constraintTop_toBottomOf="@id/header" />
 
             <ImageView
                 android:id="@+id/iconNext"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/chip_brand_icon_size"
                 android:layout_marginTop="@dimen/large_margin"
                 android:src="@drawable/icon_next"
-                android:layout_marginStart="@dimen/start5"
-                app:layout_constraintTop_toBottomOf="@+id/header"
-                app:layout_constraintStart_toEndOf="@+id/dys"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"

@@ -27,16 +27,17 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <ImageView
                         android:id="@+id/menu"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
+                        android:layout_marginEnd="@dimen/zero_dp"
+                        android:layout_marginTop="@dimen/large_margin"
                         android:src="@drawable/icon_menu"
                         android:textAlignment="center"
-                        android:layout_marginTop="@dimen/large_margin"
-                        android:layout_marginStart="@dimen/start"
-                        app:layout_constraintStart_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/calendar"
@@ -65,60 +66,63 @@
 
                     <ImageView
                         android:id="@+id/weather"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/medium"
+                        android:layout_marginTop="16dp"
                         android:src="@drawable/icon_weather"
-                        android:layout_marginEnd="@dimen/large_end"
-                        android:layout_marginTop="@dimen/rating_bar_height"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView"
-                        app:layout_constraintEnd_toStartOf="@id/day"/>
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                     <TextView
                         android:id="@+id/day"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/dy"
                         android:textColor="@color/white"
                         android:textAppearance="@style/TextAppearance.Title"
                         android:layout_marginTop="@dimen/rating_bar_height"
-                        android:layout_marginStart="@dimen/extra_large_start"
+                        android:layout_marginStart="@dimen/regular_start"
                         app:layout_constraintTop_toBottomOf="@id/textView"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
                         android:id="@+id/num"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/num"
                         android:textColor="@color/white"
                         android:textAppearance="@style/TextAppearance.Large"
-                        android:layout_marginStart="@dimen/extra_large_start"
+                        android:layout_marginStart="@dimen/color_product_select_variant"
                         app:layout_constraintTop_toBottomOf="@id/day"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
                         android:id="@+id/temp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/temp"
                         android:textColor="@color/white"
                         android:textAppearance="@style/TextAppearance.Medium"
-                        android:layout_marginStart="@dimen/super_large_start"
                         android:layout_marginTop="@dimen/avatar_user_article_height"
+                        android:layout_marginStart="@dimen/custom_width"
                         app:layout_constraintTop_toBottomOf="@id/day"
-                        app:layout_constraintStart_toEndOf="@id/num"/>
+                        app:layout_constraintStart_toStartOf="@+id/num"/>
 
                     <TextView
                         android:id="@+id/weat"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/weather"
                         android:textColor="@color/white"
+                        android:layout_marginStart="@dimen/custom_image"
                         android:textAppearance="@style/TextAppearance.Title"
-                        android:layout_marginStart="@dimen/extra_large_start"
                         app:layout_constraintTop_toBottomOf="@id/temp"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:id="@+id/div"
@@ -132,104 +136,102 @@
 
                     <ImageView
                         android:id="@+id/iconWind"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:layout_marginStart="@dimen/medium_text"
                         android:src="@drawable/icon_wind"
-                        android:layout_marginStart="@dimen/image_brand_height"
-                        android:layout_marginEnd="@dimen/start"
-                        app:layout_constraintTop_toBottomOf="@+id/div"
-                        app:layout_constraintEnd_toStartOf="@+id/iconWater"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/speed"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/speed"
-                        android:textColor="@color/name"
-                        android:textAppearance="@style/TextAppearance.Body3"
                         android:layout_marginStart="@dimen/medium_text"
-                        app:layout_constraintTop_toBottomOf="@id/iconWind"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:text="@string/speed"
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iconWind" />
 
                     <TextView
                         android:id="@+id/wind"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/wind"
-                        android:textColor="@color/div"
-                        android:textAppearance="@style/TextAppearance.Body3"
                         android:layout_marginStart="@dimen/med_text"
-                        app:layout_constraintTop_toBottomOf="@id/speed"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:text="@string/wind"
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/div"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/speed" />
 
                     <ImageView
                         android:id="@+id/iconWater"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
-                        android:layout_marginStart="@dimen/image_brand_height"
-                        android:layout_marginEnd="@dimen/image_brand_height"
                         android:layout_marginTop="@dimen/medium_margin"
                         android:src="@drawable/icon_water"
-                        app:layout_constraintStart_toEndOf="@+id/iconWind"
+                        app:layout_constraintStart_toStartOf="@+id/iconWind"
+                        app:layout_constraintEnd_toEndOf="@+id/iconRain"
                         app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/persen"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/chip_brand_icon_size"
                         android:text="@string/persen"
-                        android:textColor="@color/name"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/start_water"
-                        app:layout_constraintTop_toBottomOf="@id/iconWater"
-                        app:layout_constraintStart_toEndOf="@id/speed"/>
+                        android:textColor="@color/name"
+                        app:layout_constraintStart_toStartOf="@id/speed"
+                        app:layout_constraintEnd_toEndOf="@id/total"
+                        app:layout_constraintTop_toBottomOf="@id/iconWater" />
 
                     <TextView
                         android:id="@+id/water"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/humi"
-                        android:textColor="@color/div"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/large_end"
-                        app:layout_constraintTop_toBottomOf="@id/persen"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:textColor="@color/div"
+                        app:layout_constraintStart_toStartOf="@id/wind"
+                        app:layout_constraintEnd_toEndOf="@id/rain"
+                        app:layout_constraintTop_toBottomOf="@id/persen" />
 
 
                     <ImageView
                         android:id="@+id/iconRain"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/avatar_height"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:layout_marginEnd="40dp"
                         android:src="@drawable/icon_rain"
-                        android:layout_marginStart="@dimen/start"
-                        android:layout_marginEnd="@dimen/image_brand_height"
-                        app:layout_constraintTop_toBottomOf="@+id/div"
-                        app:layout_constraintStart_toEndOf="@+id/iconWind"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/div" />
 
                     <TextView
                         android:id="@+id/total"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/total"
-                        android:textColor="@color/name"
+                        android:layout_marginEnd="@dimen/custom_text"
                         android:textAppearance="@style/TextAppearance.Body3"
-                        android:layout_marginStart="@dimen/start2"
-                        app:layout_constraintTop_toBottomOf="@id/iconRain"
-                        app:layout_constraintStart_toEndOf="@id/persen"/>
+                        android:textColor="@color/name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iconRain" />
 
                     <TextView
                         android:id="@+id/rain"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="@string/rain"
-                        android:textColor="@color/div"
-                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:layout_marginEnd="@dimen/color_product_select_variant"
                         android:textAlignment="textEnd"
-                        android:layout_marginStart="@dimen/start3"
-                        app:layout_constraintTop_toBottomOf="@id/total"
-                        app:layout_constraintStart_toEndOf="@id/weather"/>
+                        android:textAppearance="@style/TextAppearance.Body3"
+                        android:textColor="@color/div"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/total"/>
 
 
 
@@ -237,13 +239,16 @@
 
 
             </com.google.android.material.card.MaterialCardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="2dp"
-                tools:listitem="@layout/fragment_list"
-                app:layout_constraintTop_toBottomOf="@+id/header"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                tools:listitem="@layout/fragment_list" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

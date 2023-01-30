@@ -7,6 +7,7 @@
     <dimen name="image_height">190dp</dimen>
     <dimen name="image_width">280dp</dimen>
     <dimen name="start">320dp</dimen>
+    <dimen name="custom_image">50dp</dimen>
 
     <!-- Radius -->
     <dimen name="extra_small_radius">2dp</dimen>
@@ -125,4 +126,8 @@
     <dimen name="custom_start3">24dp</dimen>
     <dimen name="custom_start4">22dp</dimen>
     <dimen name="custom_image_height">45dp</dimen>
+    <dimen name="custom_image_height2">150dp</dimen>
+    <dimen name="custom_image_height3">270dp</dimen>
+    <dimen name="custom_text">55dp</dimen>
+    <dimen name="custom_width">60dp</dimen>
 </resources>
