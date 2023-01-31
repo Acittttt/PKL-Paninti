@@ -64,7 +64,7 @@ class fragment_weather_home : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter = WeatherHomeAdapter(weatherHomeArrayList)
+        adapter = WeatherHomeAdapter()
         recyclerView.adapter = adapter
     }
 
