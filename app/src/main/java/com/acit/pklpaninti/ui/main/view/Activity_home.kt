@@ -1,11 +1,11 @@
-package com.acit.pklpaninti
+package com.acit.pklpaninti.ui.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.acit.pklpaninti.databinding.FragmentLoginBinding
+import com.acit.pklpaninti.R
 import com.acit.pklpaninti.databinding.FragmentWeatherBinding
 
-class activity_home : AppCompatActivity() {
+class Activity_home : AppCompatActivity() {
     private lateinit var binding: FragmentWeatherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

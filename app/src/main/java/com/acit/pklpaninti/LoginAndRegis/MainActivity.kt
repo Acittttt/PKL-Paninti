@@ -1,7 +1,8 @@
-package com.acit.pklpaninti
+package com.acit.pklpaninti.LoginAndRegis
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.acit.pklpaninti.R
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
 
 class MainActivity : AppCompatActivity() {

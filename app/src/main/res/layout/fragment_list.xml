@@ -2,10 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
+    android:layout_height="@dimen/extra_huge_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/weather">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_St"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_Nd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
 
         <TextView
             android:id="@+id/day"
@@ -13,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/day"
             android:textColor="@color/white"
-            android:textAppearance="@style/TextAppearance.Title"
+            android:textAppearance="@style/TextAppearance.Weather.Body2"
             android:layout_marginTop="@dimen/rating_bar_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +36,8 @@
             android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/large_margin"
-            android:src="@drawable/icon_google"
-            android:layout_marginStart="@dimen/color_product_select_variant"
+            android:src="@drawable/icon_rainy"
+            android:layout_marginStart="@dimen/semi_huge_margin"
             android:layout_marginTop="@dimen/avatar_stack_space"
             app:layout_constraintStart_toStartOf="@+id/day"
             app:layout_constraintEnd_toEndOf="@+id/weather"
@@ -36,10 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rating_bar_height"
             android:text="@string/weather"
-            android:textAppearance="@style/TextAppearance.Maven"
+            android:textAppearance="@style/TextAppearance.Weather.Body"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/icon"
-            app:layout_constraintEnd_toEndOf="@+id/temp"
+            app:layout_constraintEnd_toEndOf="@+id/guideLine_Nd"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -48,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="@string/temperatur"
             android:textColor="@color/white"
-            android:textAppearance="@style/TextAppearance.Body"
+            android:textAppearance="@style/TextAppearance.Weather.Body"
             android:layout_marginTop="@dimen/rating_bar_height"
             android:layout_marginEnd="@dimen/icon_bookmark_height"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.acit.pklpaninti
+package com.acit.pklpaninti.LoginAndRegis
 
 import android.content.Intent
 import android.graphics.Color
@@ -14,10 +14,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.acit.pklpaninti.R
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
-import android.util.DisplayMetrics
-import com.acit.pklpaninti.databinding.FragmentRegisterBinding
-import kotlinx.android.synthetic.main.fragment_login.*
+import com.acit.pklpaninti.ui.main.view.Activity_home
 
 
 class fragment_login : Fragment() {
@@ -113,7 +112,7 @@ class fragment_login : Fragment() {
     }
 
     private fun binding(){
-        val intent = Intent(activity, activity_home::class.java)
+        val intent = Intent(activity, Activity_home::class.java)
         startActivity(intent)
     }
 

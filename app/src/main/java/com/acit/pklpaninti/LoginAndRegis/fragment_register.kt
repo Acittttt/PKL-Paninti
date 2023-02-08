@@ -1,4 +1,4 @@
-package com.acit.pklpaninti
+package com.acit.pklpaninti.LoginAndRegis
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,17 +7,13 @@ import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.core.text.TextUtilsCompat
-import com.acit.pklpaninti.databinding.FragmentLoginBinding
+import com.acit.pklpaninti.R
 import com.acit.pklpaninti.databinding.FragmentRegisterBinding
-import kotlinx.android.synthetic.main.fragment_login.view.*
-import kotlinx.android.synthetic.main.fragment_register.*
+import com.acit.pklpaninti.ui.main.view.Activity_home
 
 
 class fragment_register : Fragment() {
@@ -188,7 +184,7 @@ class fragment_register : Fragment() {
     }
 
     private fun binding(){
-        val intent = Intent(activity, activity_home::class.java)
+        val intent = Intent(activity, Activity_home::class.java)
         startActivity(intent)
     }
 

@@ -130,4 +130,5 @@
     <dimen name="custom_image_height3">270dp</dimen>
     <dimen name="custom_text">55dp</dimen>
     <dimen name="custom_width">60dp</dimen>
+    <dimen name="custom_width2">90dp</dimen>
 </resources>
