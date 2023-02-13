@@ -19,7 +19,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="@dimen/custom_cv2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -30,10 +30,11 @@
 
                     <ImageView
                         android:id="@+id/back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/avatar_height"
-                        android:layout_marginEnd="@dimen/zero_dp"
+                        android:layout_width="@dimen/color_product_select_variant"
+                        android:layout_height="@dimen/color_product_select_variant"
+                        android:layout_marginEnd="@dimen/custom_start4"
                         android:layout_marginTop="@dimen/large_margin"
+                        android:layout_marginStart="@dimen/custom_start4"
                         android:src="@drawable/icon_back"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +42,9 @@
 
                     <ImageView
                         android:id="@+id/menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/avatar_height"
-                        android:layout_marginEnd="@dimen/zero_dp"
+                        android:layout_width="@dimen/color_product_select_variant"
+                        android:layout_height="@dimen/color_product_select_variant"
+                        android:layout_marginEnd="@dimen/custom_start4"
                         android:layout_marginTop="@dimen/large_margin"
                         android:src="@drawable/icon_menu"
                         android:textAlignment="center"
@@ -52,37 +53,42 @@
 
                     <ImageView
                         android:id="@+id/calendar"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/avatar_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium_margin"
                         android:src="@drawable/icon_calendar"
-                        android:layout_marginStart="@dimen/large_start"
-                        android:layout_marginEnd="@dimen/large_end"
+                        android:layout_marginStart="@dimen/small_end"
                         app:layout_constraintTop_toBottomOf="@+id/menu"
-                        app:layout_constraintEnd_toStartOf="@+id/textView"/>
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium_margin"
-                        android:textAppearance="@style/TextAppearance.Maven3"
+                        android:textAppearance="@style/TextAppearance.Title"
                         android:textStyle="bold"
+                        android:layout_marginEnd="@dimen/small_end"
                         android:text="@string/days"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:layout_marginStart="@dimen/small_text"
-                        app:layout_constraintStart_toEndOf="@id/calendar"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/menu" />
 
-                    <ImageView
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/weather"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/medium"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/icon_weather"
+                        android:layout_width="@dimen/cloud_height2"
+                        android:layout_height="@dimen/cloud_height2"
+                        android:layout_marginStart="@dimen/huge_margin"
+                        android:layout_marginTop="@dimen/large_margin"
+                        android:elevation="@dimen/custom_margin_10dp"
+                        android:scaleType="fitCenter"
+                        android:visibility="visible"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                        app:layout_constraintTop_toBottomOf="@id/textView"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/ic_rainy_night"/>
 
                     <TextView
                         android:id="@+id/day"
@@ -130,7 +136,7 @@
                         android:layout_marginStart="@dimen/custom_image"
                         android:textAppearance="@style/TextAppearance.Title"
                         app:layout_constraintTop_toBottomOf="@id/temp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/weather"
                         app:layout_constraintEnd_toEndOf="parent" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -232,7 +238,7 @@
 
                     <TextView
                         android:id="@+id/rain"
-                        android:layout_width="60dp"
+                        android:layout_width="@dimen/custom_width"
                         android:layout_height="wrap_content"
                         android:text="@string/rain"
                         android:layout_marginEnd="@dimen/color_product_select_variant"
@@ -249,11 +255,26 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationLoading"
+                android:layout_width="@dimen/cloud_height"
+                android:layout_height="@dimen/cloud_height"
+                android:elevation="@dimen/custom_margin_10dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/ic_loading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="2dp"
+                android:paddingTop="@dimen/view_large_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/header"

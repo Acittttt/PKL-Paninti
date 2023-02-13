@@ -6,43 +6,46 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.acit.pklpaninti.R
+import com.acit.pklpaninti.data.model.Hour
 import com.acit.pklpaninti.data.model.WeatherData
 import com.acit.pklpaninti.databinding.FragmentListItemBinding
+import com.bumptech.glide.Glide
 
 class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeViewHolder>() {
 
     private val limit = 4
 
     class WeatherHomeViewHolder(private val binding: FragmentListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(weather: WeatherData) {
-            binding.apply {
-                val humidity = "${weather.main.humidity}%"
-                val hour = "${weather.dtTxt.substring(11, 16)}"
-                val main = "${weather.weather.component1().main}"
 
-                if(main == "Clouds") icon.setImageResource(R.drawable.icon_two_cloud)
-                else if (main == "Rain") icon.setImageResource(R.drawable.icon_rainy)
-                else if (main == "Clear") icon.setImageResource(R.drawable.icon_sunny)
-                else icon.setImageResource(R.drawable.icon_cloud)
+        fun bind(item: Hour) {
+            binding.apply {
+                val humidity = "${item.humidity}%"
+                val hour = "${item.time.substring(11, 16)}"
+                val iconWeather = "https:${item.condition.icon}"
+
+                Glide.with(icon.context)
+                    .load(iconWeather)
+                    .into(icon)
+
                 percen.text = humidity
                 time.text = hour
             }
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<WeatherData>() {
-        override fun areItemsTheSame(oldItem: WeatherData, newItem: WeatherData): Boolean {
-            return oldItem.dtTxt == newItem.dtTxt
+    private val differCallback = object : DiffUtil.ItemCallback<Hour>() {
+        override fun areItemsTheSame(oldItem: Hour, newItem: Hour): Boolean {
+            return oldItem.time == newItem.time
         }
 
-        override fun areContentsTheSame(oldItem: WeatherData, newItem: WeatherData): Boolean {
+        override fun areContentsTheSame(oldItem: Hour, newItem: Hour): Boolean {
             return oldItem == newItem
         }
     }
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    var items : List<WeatherData>
+    var items : List<Hour>
         get() = differ.currentList
         set(value) = differ.submitList(value)
 

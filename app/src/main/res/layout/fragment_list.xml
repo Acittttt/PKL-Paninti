@@ -24,7 +24,7 @@
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/day"
+            android:text="@string/day3"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.Weather.Body2"
             android:layout_marginTop="@dimen/rating_bar_height"
@@ -35,12 +35,11 @@
         <ImageView
             android:id="@+id/icon"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/large_margin"
+            android:layout_height="@dimen/close_icon_size"
             android:src="@drawable/icon_rainy"
-            android:layout_marginStart="@dimen/semi_huge_margin"
-            android:layout_marginTop="@dimen/avatar_stack_space"
-            app:layout_constraintStart_toStartOf="@+id/day"
-            app:layout_constraintEnd_toEndOf="@+id/weather"
+            android:layout_marginStart="@dimen/chip_brand_icon_size"
+            android:layout_marginTop="@dimen/rating_bar_height"
+            app:layout_constraintStart_toStartOf="@+id/guideLine_St"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
@@ -49,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rating_bar_height"
             android:text="@string/weather"
+            android:layout_marginStart="@dimen/medium_start"
             android:textAppearance="@style/TextAppearance.Weather.Body"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/icon"

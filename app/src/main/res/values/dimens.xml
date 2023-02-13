@@ -131,4 +131,10 @@
     <dimen name="custom_text">55dp</dimen>
     <dimen name="custom_width">60dp</dimen>
     <dimen name="custom_width2">90dp</dimen>
+    <dimen name="custom_start6">43dp</dimen>
+    <dimen name="cloud_height">180dp</dimen>
+    <dimen name="cloud_height2">120dp</dimen>
+    <dimen name="day_width">72dp</dimen>
+    <dimen name="custom_cv">650dp</dimen>
+    <dimen name="custom_cv2">400dp</dimen>
 </resources>
