@@ -1,4 +1,4 @@
-package com.acit.pklpaninti.LoginAndRegis
+package com.acit.pklpaninti.login
 
 import android.content.Intent
 import android.graphics.Color
@@ -16,10 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.acit.pklpaninti.R
 import com.acit.pklpaninti.databinding.FragmentLoginBinding
-import com.acit.pklpaninti.ui.main.view.Activity_home
-
-
-class fragment_login : Fragment() {
+import com.acit.pklpaninti.ui.main.view.ActivityHome
+class FragmentLogin : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +27,6 @@ class fragment_login : Fragment() {
 
     var validUsername = false
     var validPassword = false
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,19 +37,17 @@ class fragment_login : Fragment() {
 
         return view
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view()
     }
-
     private fun view(){
         val spannable = SpannableStringBuilder(binding.regis.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#4496B3"))
 
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val fragment = fragment_register()
+                val fragment = FragmentRegister()
                 val transaction = fragmentManager?.beginTransaction()
                 transaction?.replace(R.id.frame_layout, fragment)?.commit()
             }
@@ -66,7 +61,6 @@ class fragment_login : Fragment() {
         password()
         submit()
     }
-
     private fun username(){
         binding.editUser.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -80,7 +74,6 @@ class fragment_login : Fragment() {
             }
         })
     }
-
     private fun password(){
         binding.editPass.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -94,33 +87,27 @@ class fragment_login : Fragment() {
             }
         })
     }
-
     private fun submit(){
         binding.submit.setOnClickListener{
             validation()
         }
     }
-
     private fun validation(){
         nullCheck()
         validationTrue()
     }
-
     private fun validationTrue(){
         if(isNullUsername() && isNullPassword() && validUsername==true && validPassword==true)
             binding()
     }
-
     private fun binding(){
-        val intent = Intent(activity, Activity_home::class.java)
+        val intent = Intent(activity, ActivityHome::class.java)
         startActivity(intent)
     }
-
     private fun nullCheck(){
         isNullUsername()
         isNullPassword()
     }
-
     private fun isNullUsername(): Boolean{
         isNullUsername = if (binding.editUser.length() == 0){
             nullUsername()
@@ -131,7 +118,6 @@ class fragment_login : Fragment() {
 
         return isNullUsername
     }
-
     private fun isNullPassword(): Boolean{
         isNullPassword = if (binding.editPass.length() == 0){
             nullPassword()
@@ -142,31 +128,26 @@ class fragment_login : Fragment() {
 
         return isNullPassword
     }
-
     private fun nullUsername(): Boolean{
         binding.user.error = getString(R.string.valUser)
         binding.editUser.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
-
     private fun nullPassword(): Boolean{
         binding.pass.error = getString(R.string.valPass)
         binding.editPass.setBackgroundResource(R.drawable.bg_textbox_red)
         return false
     }
-
     private fun clearUsername(){
         binding.user.isErrorEnabled = false
         binding.editUser.setBackgroundResource(R.drawable.bg_selector)
         validUsername = true
     }
-
     private fun clearPassword(){
         binding.pass.isErrorEnabled = false
         binding.editPass.setBackgroundResource(R.drawable.bg_selector)
         validPassword = true
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

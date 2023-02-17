@@ -12,11 +12,7 @@ import com.acit.pklpaninti.databinding.FragmentListItemBinding
 import com.bumptech.glide.Glide
 
 class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeViewHolder>() {
-
-    private val limit = 4
-
     class WeatherHomeViewHolder(private val binding: FragmentListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(item: Hour) {
             binding.apply {
                 val humidity = "${item.humidity}%"
@@ -34,13 +30,15 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<Hour>() {
-        override fun areItemsTheSame(oldItem: Hour, newItem: Hour): Boolean {
-            return oldItem.time == newItem.time
-        }
+        override fun areItemsTheSame(
+            oldItem: Hour,
+            newItem: Hour
+        ): Boolean = oldItem.time == newItem.time
 
-        override fun areContentsTheSame(oldItem: Hour, newItem: Hour): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(
+            oldItem: Hour,
+            newItem: Hour
+        ): Boolean = oldItem == newItem
     }
 
     val differ = AsyncListDiffer(this, differCallback)
@@ -48,7 +46,6 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
     var items : List<Hour>
         get() = differ.currentList
         set(value) = differ.submitList(value)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = WeatherHomeViewHolder(
         FragmentListItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -56,12 +53,10 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
             false
         )
     )
-
     override fun onBindViewHolder(holder: WeatherHomeViewHolder, position: Int) {
         holder.bind(items[position])
         holder.setIsRecyclable(true)
     }
-    override fun getItemCount(): Int {
-        return if (items.size > limit) limit else items.size
-    }
+    override fun getItemCount(): Int = items.size
+
 }

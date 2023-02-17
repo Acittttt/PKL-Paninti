@@ -16,7 +16,7 @@
         android:theme="@style/Theme.PKLPaninti"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.view.Activity_home"
+            android:name=".ui.main.view.ActivityHome"
             android:screenOrientation="nosensor"
             android:exported="false">
             <meta-data
@@ -24,7 +24,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginAndRegis.MainActivity"
+            android:name=".login.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

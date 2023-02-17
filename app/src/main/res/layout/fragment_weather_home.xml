@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.view.fragment_weather_home"
+    tools:context=".ui.main.view.FragmentWeatherHome"
     android:background="@color/weather">
 
     <androidx.core.widget.NestedScrollView
@@ -119,7 +119,7 @@
                         app:layout_constraintTop_toBottomOf="@id/num" />
 
                     <TextView
-                        android:id="@+id/date"
+                        android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
@@ -139,7 +139,7 @@
                         app:dividerColor="@color/div"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/date" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
                     <ImageView
                         android:id="@+id/iconWind"
@@ -283,7 +283,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/day"
-                tools:listitem="@layout/fragment_list_item" />
+                tools:listitem="@layout/fragment_list_item"/>
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationLoading"
