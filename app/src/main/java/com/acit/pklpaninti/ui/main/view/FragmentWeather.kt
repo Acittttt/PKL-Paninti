@@ -68,7 +68,6 @@ class FragmentWeather : Fragment() {
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
-                snowLoading(resource.status == Status.SUCCESS || resource.status == Status.ERROR)
                 snowLoading( resource.status == Status.LOADING)
 
                 when (resource.status) {

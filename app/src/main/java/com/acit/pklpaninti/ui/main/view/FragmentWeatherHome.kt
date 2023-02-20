@@ -9,11 +9,9 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.acit.pklpaninti.R
 import com.acit.pklpaninti.data.api.ApiHelper
 import com.acit.pklpaninti.data.api.RetrofitBuilder
-import com.acit.pklpaninti.data.model.Hour
 import com.acit.pklpaninti.ui.main.adapter.WeatherHomeAdapter
 import com.acit.pklpaninti.databinding.FragmentWeatherHomeBinding
 import com.acit.pklpaninti.ui.base.ViewModelFactory
@@ -72,7 +70,6 @@ class FragmentWeatherHome : Fragment() {
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
-                snowLoading(resource.status == Status.SUCCESS || resource.status == Status.ERROR)
                 snowLoading(resource.status == Status.LOADING)
                 when (resource.status) {
                     Status.SUCCESS -> {

@@ -141,7 +141,6 @@
             android:text="@string/or"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Caption1"
-            android:background="@color/white"
             android:textColor="@color/label_secondary"
             android:layout_marginTop="@dimen/screen_margin"
             app:layout_constraintTop_toBottomOf="@+id/submit"

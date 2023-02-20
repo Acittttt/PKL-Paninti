@@ -37,9 +37,8 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
         override fun areItemsTheSame(
             oldItem: Forecastday,
             newItem: Forecastday
-        ): Boolean {
-            return oldItem.date == newItem.date
-        }
+        ) = oldItem.date == newItem.date
+
 
         override fun areContentsTheSame(oldItem: Forecastday, newItem: Forecastday): Boolean {
             return oldItem == newItem

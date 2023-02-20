@@ -33,12 +33,12 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
         override fun areItemsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean = oldItem.time == newItem.time
+        ) = oldItem.time == newItem.time
 
         override fun areContentsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean = oldItem == newItem
+        ) = oldItem == newItem
     }
 
     val differ = AsyncListDiffer(this, differCallback)
