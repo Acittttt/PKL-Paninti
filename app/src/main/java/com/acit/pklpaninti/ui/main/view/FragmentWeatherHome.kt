@@ -19,11 +19,13 @@ import com.acit.pklpaninti.ui.main.viewmodel.MainViewModel
 import com.acit.pklpaninti.utils.Status
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+
 class FragmentWeatherHome : Fragment() {
 
     private lateinit var viewModel : MainViewModel
     private lateinit var binding : FragmentWeatherHomeBinding
     private var adapter : WeatherHomeAdapter = WeatherHomeAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +35,7 @@ class FragmentWeatherHome : Fragment() {
 
         return view
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCardView()
@@ -41,9 +44,11 @@ class FragmentWeatherHome : Fragment() {
         setupObservers()
         nextSevenDay()
     }
+
     private fun setCardView(){
         binding.header.setBackgroundResource(R.drawable.bg_weather)
     }
+
     private fun setupViewModel() {
         viewModel = ViewModelProvider(
             this,
@@ -51,9 +56,11 @@ class FragmentWeatherHome : Fragment() {
         )[MainViewModel::class.java]
         viewModel.getForecast()
     }
+
     private fun setupUI(){
         binding.recyclerView.adapter = adapter
     }
+
     private fun nextSevenDay(){
         binding.dys.setOnClickListener{
             val fragment = FragmentWeather()
@@ -61,12 +68,14 @@ class FragmentWeatherHome : Fragment() {
             transaction?.replace(R.id.frame_layout,fragment)?.commit()
         }
     }
+
     private fun snowLoading(loading: Boolean) {
         binding.apply {
             animationLoading.isVisible = loading
             recyclerView.isVisible =!loading
         }
     }
+
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->

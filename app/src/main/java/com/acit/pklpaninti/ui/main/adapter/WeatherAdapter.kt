@@ -10,8 +10,11 @@ import com.acit.pklpaninti.databinding.FragmentListBinding
 import com.bumptech.glide.Glide
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+
     class WeatherViewHolder(private val binding: FragmentListBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Forecastday) {
             binding.apply {
                 val condition = "${item.day.condition.text}"
@@ -39,10 +42,10 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
             newItem: Forecastday
         ) = oldItem.date == newItem.date
 
-
-        override fun areContentsTheSame(oldItem: Forecastday, newItem: Forecastday): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(
+            oldItem: Forecastday,
+            newItem: Forecastday
+        ) = oldItem == newItem
     }
 
     val differ = AsyncListDiffer(this, differCallback)
@@ -50,6 +53,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
     var items : List<Forecastday>
         get() = differ.currentList
         set(value) = differ.submitList(value)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = WeatherViewHolder(
         FragmentListBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -57,9 +61,11 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
             false
         )
     )
+
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
         holder.setIsRecyclable(true)
     }
-    override fun getItemCount(): Int = items.size
+
+    override fun getItemCount() = items.size
 }

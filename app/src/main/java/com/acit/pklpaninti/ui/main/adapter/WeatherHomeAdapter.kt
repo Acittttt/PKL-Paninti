@@ -12,7 +12,9 @@ import com.acit.pklpaninti.databinding.FragmentListItemBinding
 import com.bumptech.glide.Glide
 
 class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeViewHolder>() {
+
     class WeatherHomeViewHolder(private val binding: FragmentListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Hour) {
             binding.apply {
                 val humidity = "${item.humidity}%"
@@ -29,7 +31,7 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<Hour>() {
+    val differCallback = object : DiffUtil.ItemCallback<Hour>() {
         override fun areItemsTheSame(
             oldItem: Hour,
             newItem: Hour
@@ -42,10 +44,10 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
     }
 
     val differ = AsyncListDiffer(this, differCallback)
-
     var items : List<Hour>
         get() = differ.currentList
         set(value) = differ.submitList(value)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = WeatherHomeViewHolder(
         FragmentListItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -53,10 +55,11 @@ class WeatherHomeAdapter: RecyclerView.Adapter<WeatherHomeAdapter.WeatherHomeVie
             false
         )
     )
+
     override fun onBindViewHolder(holder: WeatherHomeViewHolder, position: Int) {
         holder.bind(items[position])
         holder.setIsRecyclable(true)
     }
-    override fun getItemCount(): Int = items.size
 
+    override fun getItemCount() = items.size
 }

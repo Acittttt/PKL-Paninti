@@ -1,6 +1,7 @@
 package com.acit.pklpaninti.data.model
 
 import com.google.gson.annotations.SerializedName
+
 data class Hour(
     @SerializedName("chance_of_rain")
     val chanceOfRain: Int,

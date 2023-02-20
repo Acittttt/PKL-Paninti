@@ -1,6 +1,7 @@
 package com.acit.pklpaninti.data.model
 
 import com.google.gson.annotations.SerializedName
+
 data class Current(
     @SerializedName("cloud")
     val cloud: Int,

@@ -1,6 +1,7 @@
 package com.acit.pklpaninti.data.model
 
 import com.google.gson.annotations.SerializedName
+
 data class Astro(
     @SerializedName("is_moon_up")
     val isMoonUp: Int,
