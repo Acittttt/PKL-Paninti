@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/fragmentWeatherHome">
+
+    <fragment
+        android:id="@+id/fragmentWeatherHome"
+        android:name="com.acit.pklpaninti.ui.main.view.FragmentWeatherHome"
+        android:label="fragment_weather_home"
+        tools:layout="@layout/fragment_weather_home" >
+        <action
+            android:id="@+id/action_fragmentWeatherHome_to_fragmentWeather"
+            app:destination="@id/fragmentWeather" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentWeather"
+        android:name="com.acit.pklpaninti.ui.main.view.FragmentWeather"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_fragmentWeather_to_fragmentWeatherHome"
+            app:destination="@id/fragmentWeatherHome" />
+    </fragment>
+</navigation>

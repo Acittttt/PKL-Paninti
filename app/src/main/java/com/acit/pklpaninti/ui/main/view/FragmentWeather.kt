@@ -5,14 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.acit.pklpaninti.R
 import com.acit.pklpaninti.data.api.ApiHelper
 import com.acit.pklpaninti.data.api.RetrofitBuilder
-import com.acit.pklpaninti.data.model.Forecastday
 import com.acit.pklpaninti.ui.main.adapter.WeatherAdapter
 import com.acit.pklpaninti.databinding.FragmentWeatherBinding
 import com.acit.pklpaninti.ui.base.ViewModelFactory
@@ -35,6 +36,13 @@ class FragmentWeather : Fragment() {
         return view
     }
 
+//    override fun onClick(view: View) {
+//        val action =
+//            SpecifyAmountFragmentDirections
+//                .actionSpecifyAmountFragmentToConfirmationFragment()
+//        view.findNavController().navigate(action)
+//    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCardView()
@@ -46,10 +54,9 @@ class FragmentWeather : Fragment() {
 
     private fun backOnClick(){
         binding.back.setOnClickListener{
-            val fragment = FragmentWeatherHome()
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout,fragment)?.commit()
-        }
+            val action = FragmentWeatherDirections.actionFragmentWeatherToFragmentWeatherHome()
+                findNavController().navigate(action)
+            }
     }
 
     private fun setCardView(){

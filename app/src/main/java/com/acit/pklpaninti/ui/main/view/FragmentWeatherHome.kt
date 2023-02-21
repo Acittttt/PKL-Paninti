@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.acit.pklpaninti.R
 import com.acit.pklpaninti.data.api.ApiHelper
 import com.acit.pklpaninti.data.api.RetrofitBuilder
@@ -63,9 +65,8 @@ class FragmentWeatherHome : Fragment() {
 
     private fun nextSevenDay(){
         binding.dys.setOnClickListener{
-            val fragment = FragmentWeather()
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout,fragment)?.commit()
+            val action = FragmentWeatherHomeDirections.actionFragmentWeatherHomeToFragmentWeather()
+            findNavController().navigate(action)
         }
     }
 
