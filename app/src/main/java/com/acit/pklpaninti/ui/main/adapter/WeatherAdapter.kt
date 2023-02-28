@@ -7,23 +7,39 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.acit.pklpaninti.data.model.Forecastday
 import com.acit.pklpaninti.databinding.FragmentListBinding
+import com.acit.pklpaninti.ui.main.viewmodel.MainViewModel
+import com.acit.pklpaninti.utils.UnitPreference
 import com.bumptech.glide.Glide
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
-class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+class WeatherAdapter(private val viewModel: MainViewModel): RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
-    class WeatherViewHolder(private val binding: FragmentListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class WeatherViewHolder(private val binding: FragmentListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Forecastday) {
             binding.apply {
+
                 val condition = "${item.day.condition.text}"
-                val temp = "${item.day.avgtempC.toInt()}°"
                 val image = "https:${item.day.condition.icon}"
                 val day = item.date
                 val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
                 val dateFormat: DateFormat = SimpleDateFormat("EEEE")
                 val newDay: String = dateFormat.format(df.parse(day))
+
+                val unitPreference = viewModel.unitPreference.value
+                val temperature = when (unitPreference) {
+                    UnitPreference.CELSIUS -> item?.day?.avgtempC?.toInt()
+                    UnitPreference.FAHRENHEIT -> item?.day?.avgtempF?.toInt()
+                    UnitPreference.KELVIN -> item?.day?.avgtempC?.toInt()?.plus(273)
+                    else -> {item?.day?.avgtempC?.toInt()}
+                }
+                val temperatureText = when (unitPreference) {
+                    UnitPreference.CELSIUS -> "$temperature°C"
+                    UnitPreference.FAHRENHEIT -> "$temperature°F"
+                    UnitPreference.KELVIN -> "$temperature K"
+                    else -> {"$temperature°"}
+                }
 
                 Glide.with(icon.context)
                     .load(image)
@@ -31,7 +47,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
                 binding.day.text = newDay
                 binding.weather.text = condition
-                binding.temp.text = temp
+                binding.temp.text = temperatureText
             }
         }
     }

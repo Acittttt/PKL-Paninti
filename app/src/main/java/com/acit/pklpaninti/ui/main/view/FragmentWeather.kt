@@ -1,12 +1,15 @@
 package com.acit.pklpaninti.ui.main.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,12 +22,13 @@ import com.acit.pklpaninti.databinding.FragmentWeatherBinding
 import com.acit.pklpaninti.ui.base.ViewModelFactory
 import com.acit.pklpaninti.ui.main.viewmodel.MainViewModel
 import com.acit.pklpaninti.utils.Status
+import com.acit.pklpaninti.utils.UnitPreference
 
 class FragmentWeather : Fragment() {
 
     private lateinit var binding: FragmentWeatherBinding
     private lateinit var viewModel: MainViewModel
-    private var adapter: WeatherAdapter = WeatherAdapter()
+    private lateinit var adapter: WeatherAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +40,6 @@ class FragmentWeather : Fragment() {
         return view
     }
 
-//    override fun onClick(view: View) {
-//        val action =
-//            SpecifyAmountFragmentDirections
-//                .actionSpecifyAmountFragmentToConfirmationFragment()
-//        view.findNavController().navigate(action)
-//    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCardView()
@@ -50,13 +47,29 @@ class FragmentWeather : Fragment() {
         setupUI()
         setupObservers()
         backOnClick()
+        onBackPressed()
+    }
+
+    private fun navigateAction(){
+        val unitPreferenceEvent = viewModel.unitPreference.value.toString()
+        val action = FragmentWeatherDirections.actionFragmentWeatherToFragmentWeatherHome(unitPreferenceEvent)
+        findNavController().navigate(action)
     }
 
     private fun backOnClick(){
         binding.back.setOnClickListener{
-            val action = FragmentWeatherDirections.actionFragmentWeatherToFragmentWeatherHome()
-                findNavController().navigate(action)
+            navigateAction()
             }
+    }
+
+    private fun onBackPressed(){
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateAction()
+                findNavController().navigateUp()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this.viewLifecycleOwner, callback)
     }
 
     private fun setCardView(){
@@ -71,6 +84,7 @@ class FragmentWeather : Fragment() {
     }
 
     private fun setupUI(){
+        adapter = WeatherAdapter(viewModel)
         binding.recyclerView.adapter = adapter
     }
 
@@ -81,6 +95,7 @@ class FragmentWeather : Fragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
@@ -122,6 +137,72 @@ class FragmentWeather : Fragment() {
                                 1273, 1276, 1279, 1282 -> { animationWeather.setAnimation(R.raw.ic_storm_showersday) }
                             }
                             animationWeather.playAnimation()
+                        }
+                        fun menuCelsius(){
+                            viewModel.updateUnitPreference(UnitPreference.CELSIUS)
+                            resource.data?.forecast?.forecastday?.component2()?.day.let { weather ->
+                                val maxTemp = "${weather?.maxtempC?.toInt()}"
+                                val minTemp = "/${weather?.mintempC?.toInt()}°C"
+                                binding.apply {
+                                    num.text = maxTemp
+                                    temp.text= minTemp
+                                }
+                            }
+                        }
+
+                        fun menuFarenheit(){
+                            viewModel.updateUnitPreference(UnitPreference.FAHRENHEIT)
+                            resource.data?.forecast?.forecastday?.component2()?.day.let { weather ->
+                                val maxTemp = "${weather?.maxtempF?.toInt()}"
+                                val minTemp = "/${weather?.mintempF?.toInt()}°F"
+                                binding.apply {
+                                    num.text = maxTemp
+                                    temp.text= minTemp
+                                }
+                            }
+                        }
+
+                        fun menuKelvin(){
+                            viewModel.updateUnitPreference(UnitPreference.KELVIN)
+                            resource.data?.forecast?.forecastday?.component2()?.day.let { weather ->
+                                val maxTemp = "${weather?.maxtempC?.toInt()?.plus(273)}"
+                                val minTemp = "/${weather?.mintempC?.toInt()?.plus(273)} K"
+                                binding.apply {
+                                    num.text = maxTemp
+                                    temp.text= minTemp
+                                }
+                            }
+                        }
+
+                        val unitPreferenceHome = arguments?.getString("unitPreferenceHome")
+                        when (unitPreferenceHome){
+                            "CELSIUS" -> menuCelsius()
+                            "FAHRENHEIT" -> menuFarenheit()
+                            "KELVIN" -> menuKelvin()
+                            else -> menuCelsius()
+                        }
+
+                        binding.menu.setOnClickListener {
+                            val popupMenu = PopupMenu(this.context, binding.menu)
+                            popupMenu.menuInflater.inflate(R.menu.menu_popup, popupMenu.menu)
+                            popupMenu.setOnMenuItemClickListener { menuItem ->
+                                when (menuItem.itemId) {
+                                    R.id.iCelcius -> {
+                                        menuCelsius()
+                                        true
+                                    }
+                                    R.id.iFahrenheit -> {
+                                        menuFarenheit()
+                                        true
+                                    }
+                                    R.id.iKelvin -> {
+                                        menuKelvin()
+                                        true
+                                    }
+                                    else -> false
+                                }
+                            }
+                            popupMenu.show()
                         }
                     }
                     Status.ERROR -> {

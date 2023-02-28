@@ -13,7 +13,12 @@
         tools:layout="@layout/fragment_weather_home" >
         <action
             android:id="@+id/action_fragmentWeatherHome_to_fragmentWeather"
-            app:destination="@id/fragmentWeather" />
+            app:destination="@id/fragmentWeather"
+            app:enterAnim="@anim/from_right">
+            <argument
+                android:name="unitPreferenceHome"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fragmentWeather"
@@ -22,6 +27,16 @@
         tools:layout="@layout/fragment_weather" >
         <action
             android:id="@+id/action_fragmentWeather_to_fragmentWeatherHome"
-            app:destination="@id/fragmentWeatherHome" />
+            app:destination="@id/fragmentWeatherHome"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/to_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/fragmentWeatherHome"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="unitPreferenceEvent"
+                app:argType="string" />
+        </action>
     </fragment>
 </navigation>

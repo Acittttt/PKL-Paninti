@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -19,6 +19,7 @@ import com.acit.pklpaninti.databinding.FragmentWeatherHomeBinding
 import com.acit.pklpaninti.ui.base.ViewModelFactory
 import com.acit.pklpaninti.ui.main.viewmodel.MainViewModel
 import com.acit.pklpaninti.utils.Status
+import com.acit.pklpaninti.utils.UnitPreference
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
@@ -65,7 +66,8 @@ class FragmentWeatherHome : Fragment() {
 
     private fun nextSevenDay(){
         binding.dys.setOnClickListener{
-            val action = FragmentWeatherHomeDirections.actionFragmentWeatherHomeToFragmentWeather()
+            val unitPreferenceHome = viewModel.unitPreference.value.toString()
+            val action = FragmentWeatherHomeDirections.actionFragmentWeatherHomeToFragmentWeather(unitPreferenceHome)
             findNavController().navigate(action)
         }
     }
@@ -83,9 +85,7 @@ class FragmentWeatherHome : Fragment() {
                 snowLoading(resource.status == Status.LOADING)
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        resource.data?.let { forecast ->
-                            adapter.items = forecast.forecast.forecastday.component1().hour
-                        }
+                        resource.data?.let { forecast -> adapter.items = forecast.forecast.forecastday.component1().hour }
                         resource.data?.current.let { values ->
                             val temp = "${values?.tempC?.toInt()}°"
                             val condition = values?.condition?.text
@@ -138,19 +138,79 @@ class FragmentWeatherHome : Fragment() {
                                 animationWeather.playAnimation()
                             }
                         }
-                        val location = resource.data?.location?.name
-                        val chanceRain = "${resource.data?.forecast?.forecastday?.component1()?.day?.dailyChanceOfRain}%"
-                        val date = resource.data?.forecast?.forecastday?.component1()?.date
-                        val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
-                        val dateFormat: DateFormat = SimpleDateFormat("EEEE, dd MMMM")
-                        val newDate: String = dateFormat.format(df.parse(date))
+                        resource.data?.location?.let { location -> binding.textView.text = location.name }
 
-                        binding.apply {
-                            textView.text = location
-                            tvDate.text = newDate
-                            total.text = chanceRain
+                        resource.data?.forecast?.forecastday?.component1()?.let { forecastday ->
+                            val chanceRain = "${forecastday.day.dailyChanceOfRain}%"
+                            val date = forecastday.date
+
+                            val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+                            val dateFormat: DateFormat = SimpleDateFormat("EEEE, dd MMMM")
+                            val newDate: String = dateFormat.format(df.parse(date))
+
+                            binding.apply {
+                                tvDate.text = newDate
+                                total.text = chanceRain
+                            }
+                        }
+
+                        fun menuCelsius(){
+                            viewModel.updateUnitPreference(UnitPreference.CELSIUS)
+                            resource.data?.current.let { weather ->
+                                binding.apply {
+                                    num.text ="${weather?.tempC}°C"
+                                    celci.text= getString(R.string.celci)
+                                }
+                            }
+                        }
+
+                        fun menuFarenheit(){
+                            viewModel.updateUnitPreference(UnitPreference.FAHRENHEIT)
+                            resource.data?.current.let { weather ->
+                                binding.apply {
+                                    binding.num.text = "${weather?.tempF}°F"
+                                    binding.celci.text= getString(R.string.fahrenheit)
+                                }
+                            }
+                        }
+
+                        fun menuKelvin(){
+                            viewModel.updateUnitPreference(UnitPreference.KELVIN)
+                            resource.data?.current.let { weather ->
+                                binding.apply {
+                                    num.text = "${weather?.tempC?.toInt()?.plus(273)} K"
+                                    binding.celci.text= getString(R.string.kelvin)
+                                }
+                            }
+                        }
+
+                    val unitPreferenceEvent = arguments?.getString("unitPreferenceEvent")
+                    when (unitPreferenceEvent){
+                        "CELSIUS" -> menuCelsius()
+                        "FAHRENHEIT" -> menuFarenheit()
+                        "KELVIN" -> menuKelvin()
+                        else -> menuCelsius()
+                    }
+
+                        binding.menu.setOnClickListener {
+                            val popupMenu = PopupMenu(this.context, binding.menu)
+                            popupMenu.menuInflater.inflate(R.menu.menu_popup, popupMenu.menu)
+                            popupMenu.setOnMenuItemClickListener { menuItem ->
+                                if (menuItem.itemId == R.id.iCelcius) {
+                                    menuCelsius()
+                                    true
+                                } else if (menuItem.itemId == R.id.iFahrenheit) {
+                                    menuFarenheit()
+                                    true
+                                } else if (menuItem.itemId == R.id.iKelvin) {
+                                    menuKelvin()
+                                    true
+                                } else false
+                            }
+                            popupMenu.show()
                         }
                     }
+
                     Status.ERROR -> {
                         Toast.makeText(this.context, it.message, Toast.LENGTH_LONG).show()
                     }
